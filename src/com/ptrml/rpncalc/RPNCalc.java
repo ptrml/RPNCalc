@@ -1,7 +1,8 @@
 package com.ptrml.rpncalc;
 
 
-import com.ptrml.rpncalc.Operator.OperatorFactory;
+import com.ptrml.rpncalc.Command.Command;
+import com.ptrml.rpncalc.Command.CommandFactory;
 
 /**
  * Created by ptrml on 1/5/2017.
@@ -13,8 +14,8 @@ public class RPNCalc {
 
     private RPNStack stack;
     private RPNCore core;
+    private RPNDisplay display;
 
-    private String current = "";
 
     public RPNCalc() {
         stack = new RPNStack();
@@ -24,58 +25,78 @@ public class RPNCalc {
     public void input(Character input) throws Exception {
         if(this.isDigit(input))
             this.onDigit(input);
-        //else if(this.isOperator(input))
-        //    this.onOperation(input);
-        else
+        else if(input.equals(RPNCommands.UNDO))
+            this.onUNDO();
+        else if(input.equals(RPNCommands.REDO))
+            this.onREDO();
+        else if(input.equals(RPNCommands.STO))
+            onSTO();
+        else if(input.equals(RPNCommands.RCL))
+            onRCL();
+        else if(input.equals(RPNCommands.PROG))
+            onPROG();
+        else if(input.equals(RPNCommands.EXE))
+            this.onEXE();
+        else if (CommandFactory.isCommand(input))
             this.onCommand(input);
+        else
+            this.onUnknown();
 
-    };
+    }
+
+    private void onUnknown() throws Exception {
+        //this.clearCurrent();
+        throw new Exception("Unknown input");
+    }
 
 
+    ;
 
-    private void onDigit(Character input){
-        this.current.concat(input.toString());
+
+    /**
+     * @param input
+     */
+    private void onDigit(Character input) throws Exception {
+
+        Integer newinput = Integer.parseInt(input.toString());
+
+        if(display.getSTOFlag())
+        {
+            core.STO(newinput, this.getCurrent());
+            display.setSTOFlag(false);
+        }            
+        else if(display.getRCLFlag())
+        {
+            core.command(CommandFactory.getENTER(stack,core.RCL(newinput)));
+            display.setRCLFlag(false);
+        }
+        else
+            appendDigit(newinput);
     };
 
-    private void onENTER(){
-        core.ENTER(Double.parseDouble(this.current));
-    };
+    private void appendDigit(Integer input){
+        Double current = this.getCurrent();
+        display.setCurrent_value((current*10)+input);
+    }
 
-    private void onADD(){
-        core.ADD();
-    };
-    private void onDIVIDE(){
-        core.DIVIDE();
-    };
-    private void onMULTIPLY(){
-        core.MULTIPLY();
-    };
-    private void onSUBTRACT(){
-        core.SUBTRACT();
-    };
-    private void onCHS(){
-        core.CHS();
-    };
-    private void onDROP(){
-        core.DROP();
-    };
-    private void onSWAP(){
-        core.SWAP();
-    };
-    private void onUNDO(){
+    private void onUNDO() throws Exception {
         core.UNDO();
     };
-    private void onREDO(){
+    private void onREDO() throws Exception {
         core.REDO();
     };
-    private void onSTO(Integer position, Double num){
-        core.STO(position, num);
+    private void onSTO(){
+        display.setSTOFlag(!display.getSTOFlag());
     };
-    private void onRCL(Integer position){
-        core.RCL(position);
+    private void onRCL() {
+        display.setRCLFlag(!display.getRCLFlag());
     };
     private void onPROG(){
-        core.PROG();
+        if(display.getPROGFlag())
+        {
+            core.PROG_clear();
+        }
+        display.setPROGFlag(!display.getPROGFlag());
     };
     private void onEXE(){
         core.EXE();
@@ -83,19 +104,21 @@ public class RPNCalc {
 
 
 
-    private void onCommand(Character input)
-    {
-        //return input.equals(ENTER);
+    private void onCommand(Character input) throws Exception {
+
+        Command command;
+
+        if(input.equals(RPNCommands.ENTER))
+            command = CommandFactory.getENTER(stack,this.getCurrent());
+        else
+            command = CommandFactory.getCommand(input,stack);
+
+        if(display.getPROGFlag())
+            core.PROG_add(command);
+
     }
 
 
-
-
-
-    private Boolean isOperator(Character input)
-    {
-        return OperatorFactory.isOperator(input);
-    }
 
     private Boolean isDigit(Character input)
     {
@@ -104,13 +127,16 @@ public class RPNCalc {
 
 
 
-    public Double[] getStack()
+    public RPNStack getStack()
     {
-        return stack.getCurrentStack();
+        return stack;
     }
 
-    public String getCurrent() {
-        return current;
+    public Double getCurrent() {
+        return display.getCurrent_value();
     }
+    /*public void clearCurrent() {
+        display.clearCurrent_value();
+    }*/
 }
 

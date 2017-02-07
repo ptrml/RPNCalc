@@ -1,8 +1,10 @@
 package com.ptrml.rpncalc;
 
 import com.ptrml.rpncalc.Command.Command;
-import com.ptrml.rpncalc.Operator.OperatorFactory;
+import com.ptrml.rpncalc.Command.CommandFactory;
+import com.ptrml.rpncalc.Command.ENTERCommand;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,59 +16,83 @@ public class RPNCore {
 
     Double[] memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
 
-    List<Command> undoList;
-    List<Command> redoList;
+    private List<Command> undoList;
+    private List<Command> redoList;
+
+    private List<Command> progList;
 
     public RPNCore(RPNStack stack) {
         this.stack = stack;
+        this.undoList = new ArrayList<>();
+        this.redoList = new ArrayList<>();
     }
 
 
 
-    public void ENTER(Double input){
-        stack.push(input);
+    /*public void ENTER(Double input){
+        new ENTERCommand(stack,input).execute();
+    };*/
+
+    public void UNDO() throws Exception {
+        try
+        {
+            Command command = undoList.get(undoList.size() - 1);
+            undoList.remove(undoList.size() - 1);
+            command.undo();
+            redoList.add(command);
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Nothing to Undo");
+        }
+
     };
-    public void OPERATION(Character operation) throws Exception {
-        Double x = stack.pull();
-        Double y = stack.pull();
-
-        Double result = (OperatorFactory.getOperator(operation)).execute(x,y);
-
-        stack.push(result);
+    public void REDO() throws Exception {
+        try
+        {
+            Command command = redoList.get(undoList.size() - 1);
+            redoList.remove(undoList.size() - 1);
+            command.execute();
+            undoList.add(command);
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Nothing to Redo");
+        }
     };
-
-    public void ADD() {
+    public void STO(Integer position, Double num){
+        memory_slots[position] = num;
+    };
+    public Double RCL(Integer position) throws Exception {
+        try
+        {
+            return memory_slots[position];
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Nothing to Recall");
+        }
+    };
+    public void PROG_add(Command command){
+        progList.add(command);
+    };
+    public void PROG_clear() {
+        progList.clear();
     }
 
-    public void DIVIDE() {
+    public void EXE(){
+        for (Command command : progList)
+        {
+            this.command(command);
+        }
+    };
+
+    public void command(Command command) {
+        command.execute();
+        undoList.add(command);
+        redoList.clear();
     }
 
-    public void MULTIPLY() {
-    }
-
-    public void SUBTRACT() {
-    }
-    public void CHS(){
-        Double x = stack.pull();
-        x*=-1;
-        stack.push(x);
-    };
-    public void DROP(){
-        stack.pull();
-    };
-    public void SWAP(){
-        Double x = stack.pull();
-        Double y = stack.pull();
-
-        stack.push(x);
-        stack.push(y);
-    };
-    public void UNDO(){};
-    public void REDO(){};
-    public void STO(Integer position, Double num){};
-    public void RCL(Integer position){};
-    public void PROG(){};
-    public void EXE(){};
 
 
 }

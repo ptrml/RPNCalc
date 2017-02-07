@@ -5,20 +5,20 @@ package com.ptrml.rpncalc;
  */
 public class RPNStack {
 
-    private Double t;
-    private Double z;
-    private Double y;
-    private Double x;
+    private Double t = 0.0;
+    private Double z = 0.0;
+    private Double y = 0.0;
+    private Double x = 0.0;
 
 
 
-    Double pull(){
+    public Double pull(){
         this.x=this.y;
         this.y=this.z;
         this.z=this.t;
         return this.x;
     };
-    Double push(double input){
+    public Double push(double input){
         this.t=this.z;
         this.z=this.y;
         this.y=this.x;
