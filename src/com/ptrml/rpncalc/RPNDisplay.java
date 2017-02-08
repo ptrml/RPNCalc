@@ -3,6 +3,7 @@ package com.ptrml.rpncalc;
 import com.ptrml.rpncalc.Observe.Observed;
 import com.ptrml.rpncalc.Observe.Observing;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,11 +16,13 @@ public class RPNDisplay implements Observed {
     private Boolean RCLFlag = false;
     private Boolean RADFlag = false;
     private Boolean PROGFlag = false;
+
     private RPNStack stack;
     private List<Observing> observers;
 
     public RPNDisplay(RPNStack stack) {
         this.stack = stack;
+        this.observers = new ArrayList<>();
     }
 
 
@@ -59,13 +62,17 @@ public class RPNDisplay implements Observed {
         return stack.getCurrentStack()[0];
     }
 
-    public void setCurrent_value(Double current_value) {
+    /*public void setCurrent_value(Double current_value) {
         stack.pull();
         stack.push(current_value);
-    }
+    }*/
 
-    public void clearCurrent_value() {
+    /*public void clearCurrent_value() {
         this.setCurrent_value(0.0);
+    }*/
+
+    public Double[] getStack() {
+        return stack.getCurrentStack();
     }
 
     @Override

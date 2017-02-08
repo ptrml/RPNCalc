@@ -16,7 +16,7 @@ public class RPNCommands {
     public static final Character EIGHT = 8;
     public static final Character NINE = 9;
     public static final Character ZERO = 0;
-    public static final Character ENTER = 13;
+    public static final Character ENTER = '=';
     public static final Character ADD = '+';
     public static final Character SUBTRACT = '-';
     public static final Character MULTIPLY = '*';
@@ -36,4 +36,9 @@ public class RPNCommands {
     public static final Character ASIN = '$';
     public static final Character ACOS = '%';
     public static final Character ATAN = '^';
+
+
+    public static final Character RAD = ':';
+    public static final Character INV = ':';
+    public static final Character POINT = '.';
 }

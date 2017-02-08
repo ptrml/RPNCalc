@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.text.Font?>
+
+<?import com.ptrml.rpncalc.RPNCommands?>
+
+<?import javafx.beans.property.SimpleStringProperty?>
+<?import javafx.beans.property.SimpleObjectProperty?>
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ptrml.rpncalc.Controller">
+   <fx:define>
+       <Font fx:id="FONT" size="18" />
+       <Font fx:id="FONT_SPECIAL" size="10" />
+
+
+   </fx:define>
+
+    <StackPane  >
+        <VBox id="Screen" alignment="CENTER_RIGHT" spacing="5" >
+            <HBox alignment="TOP_RIGHT" spacing="5">
+                <Label fx:id="STOFlag" text="STO" />
+                <Label fx:id="RCLFLag" text="RCL" />
+                <Label fx:id="RADFlag" text="RAD" />
+                <Label fx:id="PROGFlag" text="PROG" />
+            </HBox>
+
+            <HBox alignment="CENTER_RIGHT" spacing="5">
+                <Label fx:id="Stack_T" text="t" />
+                <Label opacity="0.5" text=":t" />
+            </HBox>
+            <HBox alignment="CENTER_RIGHT"  spacing="5">
+                <Label fx:id="Stack_Z" text="Z" />
+                <Label opacity="0.5" text=":z" />
+            </HBox>
+            <HBox alignment="CENTER_RIGHT"  spacing="5">
+                <Label fx:id="Stack_Y" text="y" />
+                <Label opacity="0.5" text=":y" />
+            </HBox>
+            <HBox alignment="CENTER_RIGHT"  spacing="5">
+                <Label fx:id="Stack_X" text="x" />
+                <Label opacity="0.5" text=":x" />
+            </HBox>
+        </VBox>
+    </StackPane>
+
+    <VBox id="" alignment="CENTER" spacing="5">
+        <HBox id="" alignment="CENTER" spacing="5">
+            <Button id="%SIN" onAction="#processInput" prefWidth="50" text="SIN" />
+            <Button id="%COS" onAction="#processInput" prefWidth="50" text="COS" />
+            <Button id="%TAN" onAction="#processInput" prefWidth="50" text="TAN" />
+        </HBox>
+        <HBox id="" alignment="CENTER" spacing="5">
+            <Button id="%RAD" onAction="#processInput" prefWidth="50" text="RAD" />
+            <Button id="%INV" onAction="#processInput" prefWidth="50" text="INV" />
+        </HBox>
+    </VBox>
+
+    <VBox id="" alignment="CENTER" spacing="5">
+        <HBox id="" alignment="CENTER" spacing="5">
+            <Button id="%REDO" onAction="#processInput" prefWidth="50" text="REDO" />
+            <Button id="%RCL" onAction="#processInput" prefWidth="50" text="RCL" />
+            <Button id="%EXE" onAction="#processInput" prefWidth="50" text="EXE" />
+        </HBox>
+        <HBox id="" alignment="CENTER" spacing="5">
+            <Button id="%UNDO" onAction="#processInput" prefWidth="50" text="UNDO" />
+            <Button id="%STO" onAction="#processInput" prefWidth="50" text="STO" />
+            <Button id="%PROG" onAction="#processInput" prefWidth="50" text="PROG" />
+        </HBox>
+    </VBox>
+
+
+    <HBox id="" alignment="CENTER" spacing="5">
+        <Button id="%ENTER" onAction="#processInput" prefWidth="120" text="ENTER" />
+        <Button id="%DROP" onAction="#processInput" prefWidth="50" text="DROP" />
+        <Button id="%SWAP" onAction="#processInput" prefWidth="50" text="SWAP" />
+    </HBox>
+
+    <HBox alignment="CENTER" spacing="10">
+        <VBox id="Numpad" alignment="CENTER" spacing="5">
+            <HBox alignment="CENTER" spacing="5">
+                <Button id="%NINE" onAction="#processInput" prefWidth="50" text="9" />
+                <Button id="%EIGHT" onAction="#processInput" prefWidth="50" text="8" />
+                <Button id="%SEVEN" onAction="#processInput" prefWidth="50" text="7" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="5">
+                <Button id="%FOUR" onAction="#processInput" prefWidth="50" text="4" />
+                <Button id="%FIVE" onAction="#processInput" prefWidth="50" text="5" />
+                <Button id="%SIX" onAction="#processInput" prefWidth="50" text="6" />
+            </HBox>
+
+            <HBox alignment="CENTER" spacing="5">
+                <Button id="%ONE" onAction="#processInput" prefWidth="50" text="1" />
+                <Button id="%TWO" onAction="#processInput" prefWidth="50" text="2" />
+                <Button id="%THREE" onAction="#processInput" prefWidth="50" text="3" />
+            </HBox>
+            <HBox alignment="CENTER" spacing="5">
+                <Button id="%ZERO" onAction="#processInput" prefWidth="50" text="0" />
+                <Button id="%POINT" onAction="#processInput" prefWidth="50" text="." />
+                <Button id="%CHS" onAction="#processInput" prefWidth="50" text="CHS" />
+            </HBox>
+        </VBox>
+
+        <VBox id="BasicOps" alignment="CENTER" spacing="5">
+            <Button id="%DIVIDE" onAction="#processInput" prefWidth="60" text="÷" />
+            <Button id="%MULTIPLY" onAction="#processInput" prefWidth="60" text="×" />
+            <Button id="%SUBTRACT" onAction="#processInput" prefWidth="60" text="-" />
+            <Button id="%ADD" onAction="#processInput" prefWidth="60" text="+" />
+        </VBox>
+    </HBox>
+</VBox>

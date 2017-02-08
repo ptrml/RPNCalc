@@ -13,22 +13,25 @@ public class RPNStack {
 
 
     public Double pull(){
+        Double result = this.x;
+
         this.x=this.y;
         this.y=this.z;
         this.z=this.t;
-        return this.x;
+        return result;
     };
     public Double push(double input){
         this.t=this.z;
         this.z=this.y;
         this.y=this.x;
         this.x = input;
+
         return this.x;
     };
 
 
     public Double[] getCurrentStack(){
-        return new Double[]{this.x, this.y, this.t, this.z};
+        return new Double[]{this.x, this.y, this.z, this.t};
     };
 
 }

@@ -17,12 +17,17 @@ public class RPNCalc {
     private RPNDisplay display;
 
 
+
     public RPNCalc() {
         stack = new RPNStack();
         core = new RPNCore(stack);
+        display = new RPNDisplay(stack);
     }
 
     public void input(Character input) throws Exception {
+
+        System.out.println(input);
+
         if(this.isDigit(input))
             this.onDigit(input);
         else if(input.equals(RPNCommands.UNDO))
@@ -42,6 +47,7 @@ public class RPNCalc {
         else
             this.onUnknown();
 
+        display.notifyObservers();
     }
 
     private void onUnknown() throws Exception {
@@ -71,13 +77,10 @@ public class RPNCalc {
             display.setRCLFlag(false);
         }
         else
-            appendDigit(newinput);
+            core.appendDigit(newinput);
     };
 
-    private void appendDigit(Integer input){
-        Double current = this.getCurrent();
-        display.setCurrent_value((current*10)+input);
-    }
+
 
     private void onUNDO() throws Exception {
         core.UNDO();
@@ -105,7 +108,6 @@ public class RPNCalc {
 
 
     private void onCommand(Character input) throws Exception {
-
         Command command;
 
         if(input.equals(RPNCommands.ENTER))
@@ -116,6 +118,7 @@ public class RPNCalc {
         if(display.getPROGFlag())
             core.PROG_add(command);
 
+        core.command(command);
     }
 
 
@@ -126,17 +129,12 @@ public class RPNCalc {
     }
 
 
-
-    public RPNStack getStack()
-    {
-        return stack;
-    }
-
     public Double getCurrent() {
         return display.getCurrent_value();
     }
-    /*public void clearCurrent() {
-        display.clearCurrent_value();
-    }*/
+
+    public RPNDisplay getDisplay() {
+        return display;
+    }
 }
 
