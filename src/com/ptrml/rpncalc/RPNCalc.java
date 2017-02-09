@@ -10,6 +10,11 @@ import com.ptrml.rpncalc.Command.CommandFactory;
 public class RPNCalc {
 
     //TODO RADS/DEG
+    //TODO insert command za program?
+    //TODO chain of responsibility shablon
+    //TODO veke ima mediator so core i gui
+    //TODO State pattern za prog
+    //TODO S pattern
 
 
     private RPNStack stack;
@@ -95,7 +100,7 @@ public class RPNCalc {
         display.setRCLFlag(!display.getRCLFlag());
     };
     private void onPROG(){
-        if(display.getPROGFlag())
+        if(!display.getPROGFlag())
         {
             core.PROG_clear();
         }

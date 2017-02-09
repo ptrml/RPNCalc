@@ -52,25 +52,25 @@
     </StackPane>
 
     <VBox id="" alignment="CENTER" spacing="5">
-        <HBox id="" alignment="CENTER" spacing="5">
+        <HBox id="" alignment="CENTER_RIGHT" spacing="5">
+            <Button id="%RAD" onAction="#processInput" prefWidth="50" text="RAD" />
+            <Button id="%INV" onAction="#processInput" prefWidth="50" text="INV" />
+        </HBox>
+        <HBox id="" alignment="CENTER_RIGHT" spacing="5">
             <Button id="%SIN" onAction="#processInput" prefWidth="50" text="SIN" />
             <Button id="%COS" onAction="#processInput" prefWidth="50" text="COS" />
             <Button id="%TAN" onAction="#processInput" prefWidth="50" text="TAN" />
-        </HBox>
-        <HBox id="" alignment="CENTER" spacing="5">
-            <Button id="%RAD" onAction="#processInput" prefWidth="50" text="RAD" />
-            <Button id="%INV" onAction="#processInput" prefWidth="50" text="INV" />
         </HBox>
     </VBox>
 
     <VBox id="" alignment="CENTER" spacing="5">
         <HBox id="" alignment="CENTER" spacing="5">
-            <Button id="%REDO" onAction="#processInput" prefWidth="50" text="REDO" />
+            <Button id="%REDO" onAction="#processInput" prefWidth="55" text="REDO" />
             <Button id="%RCL" onAction="#processInput" prefWidth="50" text="RCL" />
             <Button id="%EXE" onAction="#processInput" prefWidth="50" text="EXE" />
         </HBox>
         <HBox id="" alignment="CENTER" spacing="5">
-            <Button id="%UNDO" onAction="#processInput" prefWidth="50" text="UNDO" />
+            <Button id="%UNDO" onAction="#processInput" prefWidth="55" text="UNDO" />
             <Button id="%STO" onAction="#processInput" prefWidth="50" text="STO" />
             <Button id="%PROG" onAction="#processInput" prefWidth="50" text="PROG" />
         </HBox>
@@ -78,7 +78,7 @@
 
 
     <HBox id="" alignment="CENTER" spacing="5">
-        <Button id="%ENTER" onAction="#processInput" prefWidth="120" text="ENTER" />
+        <Button id="%ENTER" onAction="#processInput" prefWidth="100" text="ENTER" />
         <Button id="%DROP" onAction="#processInput" prefWidth="50" text="DROP" />
         <Button id="%SWAP" onAction="#processInput" prefWidth="50" text="SWAP" />
     </HBox>
@@ -109,10 +109,10 @@
         </VBox>
 
         <VBox id="BasicOps" alignment="CENTER" spacing="5">
-            <Button id="%DIVIDE" onAction="#processInput" prefWidth="60" text="÷" />
-            <Button id="%MULTIPLY" onAction="#processInput" prefWidth="60" text="×" />
-            <Button id="%SUBTRACT" onAction="#processInput" prefWidth="60" text="-" />
-            <Button id="%ADD" onAction="#processInput" prefWidth="60" text="+" />
+            <Button id="%DIVIDE" onAction="#processInput" prefWidth="40" text="÷" />
+            <Button id="%MULTIPLY" onAction="#processInput" prefWidth="40" text="×" />
+            <Button id="%SUBTRACT" onAction="#processInput" prefWidth="40" text="-" />
+            <Button id="%ADD" onAction="#processInput" prefWidth="40" text="+" />
         </VBox>
     </HBox>
 </VBox>

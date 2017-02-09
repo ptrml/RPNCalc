@@ -22,9 +22,6 @@ public class ADDCommand extends Command {
         x = stack.pull();
         y = stack.pull();
 
-        System.err.println(x);
-        System.err.println(y);
-
         //push result
         stack.push(x+y);
     }

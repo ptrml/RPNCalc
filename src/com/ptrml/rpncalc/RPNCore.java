@@ -13,6 +13,8 @@ import java.util.List;
 public class RPNCore {
     private RPNStack stack;
 
+    //TODO VALJDA TREBA STATE PATTERN TUKA
+
     //a command was entered last turn. If a digit is pressed after a command, the X stack should reset. Command after command should use the same number.
     private Boolean command_flag = false;
     private Boolean enter_flag = false;
@@ -28,6 +30,7 @@ public class RPNCore {
         this.stack = stack;
         this.undoList = new ArrayList<>();
         this.redoList = new ArrayList<>();
+        this.progList = new ArrayList<>();
     }
 
 
@@ -40,23 +43,25 @@ public class RPNCore {
         try
         {
             Command command = undoList.get(undoList.size() - 1);
-            undoList.remove(undoList.size() - 1);
-            command.undo();
             redoList.add(command);
+            command.undo();
+            undoList.remove(command);
         }
         catch (Exception e)
         {
             throw new Exception("Nothing to Undo");
         }
 
+        System.out.println("pl="+progList.size());
     };
     public void REDO() throws Exception {
+
         try
         {
-            Command command = redoList.get(undoList.size() - 1);
-            redoList.remove(undoList.size() - 1);
-            command.execute();
+            Command command = redoList.get(redoList.size() - 1);
             undoList.add(command);
+            command.execute();
+            redoList.remove(command);
         }
         catch (Exception e)
         {
@@ -86,6 +91,7 @@ public class RPNCore {
     public void EXE(){
         for (Command command : progList)
         {
+            System.out.println(command.getClass());
             this.command(command);
         }
     };
@@ -102,6 +108,8 @@ public class RPNCore {
         command.execute();
         undoList.add(command);
         redoList.clear();
+
+        System.out.println("pl="+progList.size());
     }
 
     public Double getCurrent_value() {
@@ -122,13 +130,17 @@ public class RPNCore {
         if(command_flag)//if command was entered last turn, push the current value up
         {
             command_flag = false;
-            stack.push(0.0);
+            //stack.push(0.0);
+            this.command(CommandFactory.getENTER(stack,0.0));
         }
         if(enter_flag)//if enter was entered last turn, reset the current value
         {
             enter_flag = false;
             clearCurrent_value();
         }
+        //else //normal
+
+        //TODO ova e fail celoto, treba da se smeni
 
         Double current = getCurrent_value();
         setCurrent_value((current*10)+input);
