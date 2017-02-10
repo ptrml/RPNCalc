@@ -23,8 +23,8 @@ public class RPNCore {
 
     private List<Command> undoList;
     private List<Command> redoList;
-
     private List<Command> progList;
+
 
     public RPNCore(RPNStack stack) {
         this.stack = stack;
@@ -126,6 +126,7 @@ public class RPNCore {
     }
 
     public void appendDigit(Integer input){
+        //TODO ova e fail celoto, treba da se smeni
 
         if(command_flag)//if command was entered last turn, push the current value up
         {
@@ -140,7 +141,6 @@ public class RPNCore {
         }
         //else //normal
 
-        //TODO ova e fail celoto, treba da se smeni
 
         Double current = getCurrent_value();
         setCurrent_value((current*10)+input);

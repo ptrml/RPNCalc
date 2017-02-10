@@ -13,8 +13,12 @@ public class RPNCalc {
     //TODO insert command za program?
     //TODO chain of responsibility shablon
     //TODO veke ima mediator so core i gui
-    //TODO State pattern za prog
     //TODO S pattern
+
+
+    //TODO treba da ima grd komanda i toa vo stekot da postavuva sto se slucuva
+    //TODO state pattern za STO,RCL i INV so svoi builderi
+    //TODO posledniot input dali bil enter, broj ili obicen command mozebi state na core a ona gore state na calc
 
 
     private RPNStack stack;
