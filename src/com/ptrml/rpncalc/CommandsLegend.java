@@ -3,7 +3,7 @@ package com.ptrml.rpncalc;
 /**
  * Created by ptrml on 2/7/2017.
  */
-public class RPNCommands {
+public class CommandsLegend {
 
 
     public static final Character ONE = 1;

@@ -11,7 +11,7 @@
 <?import java.util.*?>
 <?import javafx.scene.text.Font?>
 
-<?import com.ptrml.rpncalc.RPNCommands?>
+<?import com.ptrml.rpncalc.CommandsLegend?>
 
 <?import javafx.beans.property.SimpleStringProperty?>
 <?import javafx.beans.property.SimpleObjectProperty?>

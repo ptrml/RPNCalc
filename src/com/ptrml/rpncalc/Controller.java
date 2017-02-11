@@ -44,7 +44,7 @@ public class Controller implements Observing{
     private void initialize(){
 
         calculator = new RPNCalc();
-        calculator.getDisplay().registerObserver(this);
+        calculator.getCore().registerObserver(this);
         this.notifyObserving();
     }
 
@@ -52,20 +52,30 @@ public class Controller implements Observing{
 
     @Override
     public void notifyObserving() {
-        Double[] stack = calculator.getDisplay().getStack();
+        Double[] stack = calculator.getCore().getStack().getCurrentStack();
 
         Double opacity[] = {0.1,0.9};
 
 
-        Stack_X.setText(stack[0].toString());
-        Stack_Y.setText(stack[1].toString());
-        Stack_Z.setText(stack[2].toString());
-        Stack_T.setText(stack[3].toString());
+        if(calculator.getCore().getDisplay().isEmpty())
+        {
+            Stack_X.setText(stack[0].toString());
+            Stack_Y.setText(stack[1].toString());
+            Stack_Z.setText(stack[2].toString());
+            Stack_T.setText(stack[3].toString());
+        }
+        else
+        {
+            Stack_X.setText(calculator.getCore().display.getValue());
+            Stack_Y.setText(stack[0].toString());
+            Stack_Z.setText(stack[1].toString());
+            Stack_T.setText(stack[2].toString());
+        }
 
-        PROGFlag.setOpacity(opacity[calculator.getDisplay().getPROGFlag() ? 1 : 0]);
-        RADFlag.setOpacity(opacity[calculator.getDisplay().getRADFlag() ? 1 : 0]);
-        STOFlag.setOpacity(opacity[calculator.getDisplay().getSTOFlag() ? 1 : 0]);
-        RCLFLag.setOpacity(opacity[calculator.getDisplay().getRCLFlag() ? 1 : 0]);
+        PROGFlag.setOpacity(opacity[calculator.getCore().getPROGFlag() ? 1 : 0]);
+        RADFlag.setOpacity(opacity[calculator.getCore().getRADFlag() ? 1 : 0]);
+        STOFlag.setOpacity(opacity[calculator.getCore().getSTOFlag() ? 1 : 0]);
+        RCLFLag.setOpacity(opacity[calculator.getCore().getRCLFlag() ? 1 : 0]);
 
     }
 
