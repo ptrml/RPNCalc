@@ -1,19 +1,19 @@
 package com.ptrml.rpncalc.Command;
 
+import com.ptrml.rpncalc.RPNCore;
 import com.ptrml.rpncalc.RPNStack;
 
 /**
  * Created by ptrml on 2/7/2017.
  */
-abstract public class Command {
+abstract public class Command{
 
-    protected RPNStack stack;
+    protected RPNCore core;
 
-    public Command(RPNStack stack) {
-        this.stack = stack;
+    public Command(RPNCore core) {
+        this.core = core;
     }
 
-    abstract public void execute();
+    abstract public void execute() throws Exception;
 
-    abstract public void undo();
 }

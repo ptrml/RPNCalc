@@ -3,19 +3,19 @@ package com.ptrml.rpncalc;
 /**
  * Created by ptrml on 2/7/2017.
  */
-public class CommandsLegend {
+public class CharLegend {
 
 
-    public static final Character ONE = 1;
-    public static final Character TWO = 2;
-    public static final Character THREE = 3;
-    public static final Character FOUR = 4;
-    public static final Character FIVE = 5;
-    public static final Character SIX = 6;
-    public static final Character SEVEN = 7;
-    public static final Character EIGHT = 8;
-    public static final Character NINE = 9;
-    public static final Character ZERO = 0;
+    public static final Character ONE = '1';
+    public static final Character TWO = '2';
+    public static final Character THREE = '3';
+    public static final Character FOUR = '4';
+    public static final Character FIVE = '5';
+    public static final Character SIX = '6';
+    public static final Character SEVEN = '7';
+    public static final Character EIGHT = '8';
+    public static final Character NINE = '9';
+    public static final Character ZERO = '0';
     public static final Character ENTER = '=';
     public static final Character ADD = '+';
     public static final Character SUBTRACT = '-';
@@ -38,7 +38,17 @@ public class CommandsLegend {
     public static final Character ATAN = '^';
 
 
-    public static final Character RAD = ':';
+    public static final Character DRG = '?';
     public static final Character INV = ':';
     public static final Character POINT = '.';
+
+
+    public static final Character STATE_NORMAL = 'n';
+    public static final Character STATE_INV = 'i';
+    public static final Character STATE_STO = 's';
+    public static final Character STATE_RCL = 'r';
+
+    public static final Character MODE_DEG = 'd';
+    public static final Character MODE_GRAD = 'g';
+    public static final Character MODE_RAD = 'r';
 }

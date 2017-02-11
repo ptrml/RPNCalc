@@ -1,5 +1,7 @@
 package com.ptrml.rpncalc;
 
+import com.ptrml.rpncalc.UndoHandler.Memento;
+import com.ptrml.rpncalc.UndoHandler.MementoOriginator;
 import com.ptrml.rpncalc.Observe.Observed;
 import com.ptrml.rpncalc.Observe.Observing;
 
@@ -9,17 +11,19 @@ import java.util.List;
 /**
  * Created by ptrml on 2/7/2017.
  */
-public class RPNCore implements Observed {
+public class RPNCore implements Observed,MementoOriginator {
 
+    private Character state = CharLegend.STATE_NORMAL;
+    private Character mode = CharLegend.MODE_DEG;
 
-    private Boolean STOFlag = false;
-    private Boolean RCLFlag = false;
     private Boolean RADFlag = false;
     private Boolean PROGFlag = false;
 
     //private String prebuffer = "";
 
     RPNDisplay display;
+
+    Double[] memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
 
     private RPNStack stack;
     private List<Observing> observers;
@@ -30,7 +34,7 @@ public class RPNCore implements Observed {
         this.display = new RPNDisplay();
     }
 
-
+    //OBSERVER
     @Override
     public void registerObserver(Observing _obsrv) {
         observers.add(_obsrv);
@@ -49,8 +53,27 @@ public class RPNCore implements Observed {
         }
     }
 
+    //MEMENTO
+    @Override
+    public void setState(Memento coreMemento) {
+        stack.flashCurrentStack(coreMemento.getStack());
+        this.getDisplay().setNormalValue("");
 
-    public Boolean getSTOFlag() {
+        if(coreMemento.getDisplayVolatile())
+            this.getDisplay().setVolitileValue(coreMemento.getDisplayVal());
+        else
+            this.getDisplay().setNormalValue(coreMemento.getDisplayVal());
+
+
+        notifyObservers();
+    }
+
+    @Override
+    public Memento createMemento() {
+        return new Memento(this);
+    }
+
+   /* public Boolean getSTOFlag() {
         return STOFlag;
     }
 
@@ -64,7 +87,8 @@ public class RPNCore implements Observed {
 
     public void setRCLFlag(Boolean RCLFlag) {
         this.RCLFlag = RCLFlag;
-    }
+    }*/
+
 
     public Boolean getRADFlag() {
         return RADFlag;
@@ -81,21 +105,6 @@ public class RPNCore implements Observed {
     public void setPROGFlag(Boolean PROGFlag) {
         this.PROGFlag = PROGFlag;
     }
-/*
-
-    public Double getCurrent_value() {
-        return stack.getCurrentStack()[0];
-    }
-*/
-
-    /*public void setCurrent_value(Double current_value) {
-        stack.pull();
-        stack.push(current_value);
-    }*/
-
-    /*public void clearCurrent_value() {
-        this.setCurrent_value(0.0);
-    }*/
 
     public RPNStack getStack() {
         return stack;
@@ -105,12 +114,31 @@ public class RPNCore implements Observed {
         return this.display;
     };
 
-/*
-    public String getPrebuffer() {
-        return prebuffer;
+    public Character getState() {
+        return state;
     }
 
-    public void setPrebuffer(String prebuffer) {
-        this.prebuffer = prebuffer;
-    }*/
+    public void setState(Character state) {
+        this.state = state;
+
+        notifyObservers();
+    }
+
+    public Double getMemory_slot(Integer slot) {
+        return memory_slots[slot];
+    }
+
+    public void setMemory_slot(Integer slot, Double input) {
+        this.memory_slots[slot] = input;
+    }
+
+    public Character getMode() {
+        return mode;
+    }
+
+    public void setMode(Character mode) {
+        this.mode = mode;
+
+        notifyObservers();
+    }
 }

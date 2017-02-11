@@ -1,10 +1,6 @@
 package com.ptrml.rpncalc;
 
 import com.ptrml.rpncalc.Observe.Observing;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,9 +24,15 @@ public class Controller implements Observing{
     @FXML
     private Label RADFlag;
     @FXML
+    private Label GRADFlag;
+    @FXML
+    private Label DEGFlag;
+    @FXML
     private Label STOFlag;
     @FXML
-    private Label RCLFLag;
+    private Label RCLFlag;
+    @FXML
+    private Label INVFlag;
 
 
     @FXML
@@ -73,9 +75,13 @@ public class Controller implements Observing{
         }
 
         PROGFlag.setOpacity(opacity[calculator.getCore().getPROGFlag() ? 1 : 0]);
-        RADFlag.setOpacity(opacity[calculator.getCore().getRADFlag() ? 1 : 0]);
-        STOFlag.setOpacity(opacity[calculator.getCore().getSTOFlag() ? 1 : 0]);
-        RCLFLag.setOpacity(opacity[calculator.getCore().getRCLFlag() ? 1 : 0]);
+
+        RADFlag.setOpacity(opacity[(calculator.getCore().getMode() == CharLegend.MODE_RAD) ? 1 : 0]);
+        GRADFlag.setOpacity(opacity[(calculator.getCore().getMode() == CharLegend.MODE_GRAD) ? 1 : 0]);
+        DEGFlag.setOpacity(opacity[(calculator.getCore().getMode() == CharLegend.MODE_DEG) ? 1 : 0]);
+        STOFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.STATE_STO) ? 1 : 0]);
+        RCLFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.STATE_RCL) ? 1 : 0]);
+        INVFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.STATE_INV) ? 1 : 0]);
 
     }
 

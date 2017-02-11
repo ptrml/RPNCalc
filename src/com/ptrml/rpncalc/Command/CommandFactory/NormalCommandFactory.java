@@ -1,9 +1,10 @@
 package com.ptrml.rpncalc.Command.CommandFactory;
 
-import com.ptrml.rpncalc.Command.*;
-import com.ptrml.rpncalc.CommandsLegend;
+import com.ptrml.rpncalc.Command.Command;
+import com.ptrml.rpncalc.Command.SpecialCommand.*;
+import com.ptrml.rpncalc.Command.UndoableCommand.*;
+import com.ptrml.rpncalc.CharLegend;
 import com.ptrml.rpncalc.RPNCore;
-import com.ptrml.rpncalc.RPNStack;
 
 /**
  * Created by ptrml on 12/14/2016.
@@ -16,68 +17,94 @@ public class NormalCommandFactory extends CommandFactory {
      */
     public Command getCommand(Character c, RPNCore core) {
 
-        RPNStack stack = core.getStack();
 
-        if(c.equals(CommandsLegend.ACOS))
+        System.out.println(CharLegend.ONE + " " + c);
+        if(c.equals(CharLegend.ACOS))
         {
-            return new ACOSCommand(stack);
+            return new INVCOSCommand(core);
         }
-        else if(c.equals(CommandsLegend.ADD))
+        else if(c.equals(CharLegend.ADD))
         {
-            return new ADDCommand(stack);
+            return new ADDCommand(core);
         }
-        else if(c.equals(CommandsLegend.ASIN))
+        else if(c.equals(CharLegend.ASIN))
         {
-            return new ASINCommand(stack);
+            return new INVSINCommand(core);
         }
-        else if(c.equals(CommandsLegend.ATAN))
+        else if(c.equals(CharLegend.ATAN))
         {
-            return new ATANCommand(stack);
+            return new INVTANCommand(core);
         }
-        else if(c.equals(CommandsLegend.CHS))
+        else if(c.equals(CharLegend.CHS))
         {
-            return new CHSCommand(stack);
+            return new CHSCommand(core);
         }
-        else if(c.equals(CommandsLegend.COS))
+        else if(c.equals(CharLegend.COS))
         {
-            return new COSCommand(stack);
+            return new COSCommand(core);
         }
-        else if(c.equals(CommandsLegend.DIVIDE))
+        else if(c.equals(CharLegend.DIVIDE))
         {
-            return new DIVIDECommand(stack);
+            return new DIVIDECommand(core);
         }
-        else if(c.equals(CommandsLegend.DROP))
+        else if(c.equals(CharLegend.DROP))
         {
-            return new DROPCommand(stack);
+            return new DROPCommand(core);
         }
-        else if(c.equals(CommandsLegend.MULTIPLY))
+        else if(c.equals(CharLegend.MULTIPLY))
         {
-            return new MULTIPLYCommand(stack);
+            return new MULTIPLYCommand(core);
         }
-        else if(c.equals(CommandsLegend.SIN))
+        else if(c.equals(CharLegend.SIN))
         {
-            return new SINCommand(stack);
+            return new SINCommand(core);
         }
-        else if(c.equals(CommandsLegend.SUBTRACT))
+        else if(c.equals(CharLegend.SUBTRACT))
         {
-            return new SUBTRACTCommand(stack);
+            return new SUBTRACTCommand(core);
         }
-        else if(c.equals(CommandsLegend.SWAP))
+        else if(c.equals(CharLegend.SWAP))
         {
-            return new SWAPCommand(stack);
+            return new SWAPCommand(core);
         }
-        else if(c.equals(CommandsLegend.TAN))
+        else if(c.equals(CharLegend.TAN))
         {
-            return new TANCommand(stack);
+            return new TANCommand(core);
         }
-        else if(c.equals(CommandsLegend.ENTER))
+        else if(c.equals(CharLegend.ENTER))
         {
             return new ENTERCommand(core);
         }
-        /*else if(c.equals(CommandsLegend.ZERO) || c.equals(CommandsLegend.ONE) || c.equals(CommandsLegend.TWO) || c.equals(CommandsLegend.THREE) || c.equals(CommandsLegend.FOUR) || c.equals(CommandsLegend.FIVE) || c.equals(CommandsLegend.SIX) || c.equals(CommandsLegend.SEVEN) || c.equals(CommandsLegend.EIGHT) || c.equals(CommandsLegend.NINE))
+        else if(c.equals(CharLegend.ZERO) || c.equals(CharLegend.ONE) || c.equals(CharLegend.TWO) || c.equals(CharLegend.THREE) || c.equals(CharLegend.FOUR) || c.equals(CharLegend.FIVE) || c.equals(CharLegend.SIX) || c.equals(CharLegend.SEVEN) || c.equals(CharLegend.EIGHT) || c.equals(CharLegend.NINE) || c.equals(CharLegend.POINT))
         {
-            return new NUMINPUTCommand(core);
-        }*/
+            return new DigitEnteredCommand(core,c);
+        }
+
+        else if(c.equals(CharLegend.UNDO))
+        {
+            return new UNDOCommand(core);
+        }
+
+        else if(c.equals(CharLegend.REDO))
+        {
+            return new REDOCommand(core);
+        }
+        else if(c.equals(CharLegend.STO))
+        {
+            return new STOCommand(core);
+        }
+        else if(c.equals(CharLegend.RCL))
+        {
+            return new RCLCommand(core);
+        }
+        else if(c.equals(CharLegend.INV))
+        {
+            return new INVCommand(core);
+        }
+        else if(c.equals(CharLegend.DRG))
+        {
+            return new DRGCommand(core);
+        }
 
 
         return null;

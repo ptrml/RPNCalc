@@ -1,9 +1,9 @@
 package com.ptrml.rpncalc;
 
 import com.ptrml.rpncalc.Command.Command;
-import com.ptrml.rpncalc.Command.NUMINPUTCommand;
+import com.ptrml.rpncalc.Command.UndoableCommand.NUMINPUTCommand;
+import com.ptrml.rpncalc.Command.UndoableCommand.UndoableCommand;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,45 +19,33 @@ public class RPNWorker {
     private Boolean command_flag = false;
     private Boolean enter_flag = false;
 
-    Double[] memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
 
-    private List<Command> undoList;
-    private List<Command> redoList;
+
     private List<Command> progList;
 
 
     public RPNWorker(RPNCore core) {
         this.core = core;
-        this.undoList = new ArrayList<>();
-        this.redoList = new ArrayList<>();
-        this.progList = new ArrayList<>();
     }
 
 
 
-    public void COMMAND(Command command) {
+    public void COMMAND(Command command) throws Exception {
 
         if(command != null)
         {
-            this.purgeDisplay(command);
-
             command.execute();
-            undoList.add(command);
-            redoList.clear();
 
-            System.out.println("pl="+progList.size());
         }
     }
 
-    private void purgeDisplay(Command command) {
-        if(!core.getDisplay().isEmpty() && command.getClass() != NUMINPUTCommand.class)
-            this.COMMAND(new NUMINPUTCommand(core));
-    }
 
+/*
     public void DIGIT(Character input){
         core.getDisplay().appendValue(input);
-    }
+    }*/
 
+    /*
     public void UNDO() throws Exception {
         try
         {
@@ -114,7 +102,7 @@ public class RPNWorker {
             this.COMMAND(command);
         }
     };
-
+*/
 
 
 }

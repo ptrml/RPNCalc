@@ -34,4 +34,12 @@ public class RPNStack {
         return new Double[]{this.x, this.y, this.z, this.t};
     };
 
+    public void flashCurrentStack(Double[] stack)
+    {
+        this.x = stack[0];
+        this.y = stack[1];
+        this.z = stack[2];
+        this.t = stack[3];
+    }
+
 }

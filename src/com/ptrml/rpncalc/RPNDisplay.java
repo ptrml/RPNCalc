@@ -36,4 +36,7 @@ public class RPNDisplay {
     {
         return this.value.isEmpty();
     }
+    public Boolean getIsVolatile(){
+        return isVolatile;
+    }
 }

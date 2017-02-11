@@ -11,7 +11,7 @@
 <?import java.util.*?>
 <?import javafx.scene.text.Font?>
 
-<?import com.ptrml.rpncalc.CommandsLegend?>
+<?import com.ptrml.rpncalc.CharLegend?>
 
 <?import javafx.beans.property.SimpleStringProperty?>
 <?import javafx.beans.property.SimpleObjectProperty?>
@@ -25,11 +25,18 @@
 
     <StackPane  >
         <VBox id="Screen" alignment="CENTER_RIGHT" spacing="5" >
-            <HBox alignment="TOP_RIGHT" spacing="5">
-                <Label fx:id="STOFlag" text="STO" />
-                <Label fx:id="RCLFLag" text="RCL" />
-                <Label fx:id="RADFlag" text="RAD" />
-                <Label fx:id="PROGFlag" text="PROG" />
+            <HBox spacing="5" alignment="TOP_RIGHT">
+                <HBox alignment="TOP_RIGHT" spacing="2">
+                    <Label fx:id="DEGFlag" text="D" />
+                    <Label fx:id="RADFlag" text="R" />
+                    <Label fx:id="GRADFlag" text="G" />
+                </HBox>
+                <HBox alignment="TOP_RIGHT" spacing="5">
+                    <Label fx:id="INVFlag" text="INV" />
+                    <Label fx:id="STOFlag" text="STO" />
+                    <Label fx:id="RCLFlag" text="RCL" />
+                    <Label fx:id="PROGFlag" text="PROG" />
+                </HBox>
             </HBox>
 
             <HBox alignment="CENTER_RIGHT" spacing="5">
@@ -53,7 +60,7 @@
 
     <VBox id="" alignment="CENTER" spacing="5">
         <HBox id="" alignment="CENTER_RIGHT" spacing="5">
-            <Button id="%RAD" onAction="#processInput" prefWidth="50" text="RAD" />
+            <Button id="%DRG" onAction="#processInput" prefWidth="50" text="DRG" />
             <Button id="%INV" onAction="#processInput" prefWidth="50" text="INV" />
         </HBox>
         <HBox id="" alignment="CENTER_RIGHT" spacing="5">

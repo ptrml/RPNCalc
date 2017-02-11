@@ -1,8 +1,7 @@
 package com.ptrml.rpncalc;
 
 
-import com.ptrml.rpncalc.Command.Command;
-import com.ptrml.rpncalc.Command.CommandFactory.CommandFactory;
+import com.ptrml.rpncalc.Command.CommandFactory.*;
 
 /**
  * Created by ptrml on 1/5/2017.
@@ -24,6 +23,11 @@ public class RPNCalc {
     private RPNStack stack;
     private RPNWorker worker;
     private RPNCore core;
+    private CommandFactory commandFactory;
+    private NormalCommandFactory normalCommandFactory;
+    private INVCommandFactory invCommandFactory;
+    private RCLCommandFactory rclCommandFactory;
+    private STOCommandFactory stoCommandFactory;
 
 
 
@@ -31,65 +35,35 @@ public class RPNCalc {
         stack = new RPNStack();
         core = new RPNCore(stack);
         worker = new RPNWorker(core);
+
+        normalCommandFactory = new NormalCommandFactory();
+        invCommandFactory = new INVCommandFactory();
+        rclCommandFactory = new RCLCommandFactory();
+        stoCommandFactory = new STOCommandFactory();
     }
 
     public void input(Character input) throws Exception {
 
         System.out.println(input);
 
-        if(this.isDigit(input))
-            this.onDigit(input);
-        else if(input.equals(CommandsLegend.UNDO))
-            this.onUNDO();
-        else if(input.equals(CommandsLegend.REDO))
-            this.onREDO();
-        else if(input.equals(CommandsLegend.STO))
-            onSTO();
-        else if(input.equals(CommandsLegend.RCL))
-            onRCL();
-        else if(input.equals(CommandsLegend.PROG))
-            onPROG();
-        else if(input.equals(CommandsLegend.EXE))
-            this.onEXE();
-        else if (CommandFactory.isCommand(input))
-            this.onCommand(input);
-        else
-            this.onUnknown();
+        this.setState(core);
+
+        worker.COMMAND(commandFactory.getCommand(input,core));
 
         core.notifyObservers();
     }
-
+/*
     private void onUnknown() throws Exception {
         //this.clearCurrent();
         throw new Exception("Unknown input");
-    }
+    }*/
 
 
     ;
 
 
-    /**
-     * @param input
-     */
-    private void onDigit(Character input) throws Exception {
 
-        //Integer newinput = Integer.parseInt(input.toString());
-
-        /*if(core.getSTOFlag())
-        {
-            worker.STO(newinput, this.getCurrent());
-            core.setSTOFlag(false);
-        }            
-        else if(core.getRCLFlag())
-        {
-            worker.command(CommandFactory.getENTER(stack,worker.RCL(newinput)));
-            core.setRCLFlag(false);
-        }
-        else*/
-            worker.DIGIT(input);
-    };
-
-
+/*
 
     private void onUNDO() throws Exception {
         worker.UNDO();
@@ -114,29 +88,29 @@ public class RPNCalc {
         worker.EXE();
     };
 
-
-
-    private void onCommand(Character input) throws Exception {
-        Command command;
-
-        command = CommandFactory.getCommand(input,core);
-
-        /*if(core.getPROGFlag())
-            worker.PROG_add(command);*/
-
-        worker.COMMAND(command);
-    }
+*/
 
 
 
-    private Boolean isDigit(Character input)
-    {
-        return (input >= '0' && input <= '9') || input == '.';
-    }
+
+
 
 
     public RPNCore getCore() {
         return core;
+    }
+
+    private void setState(RPNCore core)
+    {
+        if(core.getState() == CharLegend.STATE_NORMAL)
+            commandFactory = normalCommandFactory;
+        else if (core.getState() == CharLegend.STATE_INV)
+            commandFactory = invCommandFactory;
+        else if (core.getState() == CharLegend.STATE_RCL)
+            commandFactory = rclCommandFactory;
+        else if (core.getState() == CharLegend.STATE_STO)
+            commandFactory = stoCommandFactory;
+
     }
 }
 
