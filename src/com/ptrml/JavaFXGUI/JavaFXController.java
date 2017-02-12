@@ -1,4 +1,4 @@
-package com.ptrml;
+package com.ptrml.JavaFXGUI;
 
 import com.ptrml.rpncalc.CharLegend;
 import com.ptrml.rpncalc.Observe.Observing;
