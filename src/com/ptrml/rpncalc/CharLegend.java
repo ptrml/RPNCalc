@@ -37,6 +37,8 @@ public class CharLegend {
     public static final Character ACOS = '%';
     public static final Character ATAN = '^';
 
+    public static final Character AC = '|';
+
 
     public static final Character DRG = '?';
     public static final Character INV = ':';

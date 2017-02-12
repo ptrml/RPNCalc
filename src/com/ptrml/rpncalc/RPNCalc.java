@@ -2,6 +2,7 @@ package com.ptrml.rpncalc;
 
 
 import com.ptrml.rpncalc.Command.CommandFactory.*;
+import com.ptrml.rpncalc.RPNWorker.RPNWorker_Calculate;
 
 /**
  * Created by ptrml on 1/5/2017.
@@ -21,7 +22,7 @@ public class RPNCalc {
 
 
     private RPNStack stack;
-    private RPNWorker worker;
+    private RPNWorker_Calculate worker;
     private RPNCore core;
     private CommandFactory commandFactory;
     private NormalCommandFactory normalCommandFactory;
@@ -34,7 +35,7 @@ public class RPNCalc {
     public RPNCalc() {
         stack = new RPNStack();
         core = new RPNCore(stack);
-        worker = new RPNWorker(core);
+        worker = new RPNWorker_Calculate(core);
 
         normalCommandFactory = new NormalCommandFactory();
         invCommandFactory = new INVCommandFactory();
@@ -48,52 +49,10 @@ public class RPNCalc {
 
         this.setState(core);
 
-        worker.COMMAND(commandFactory.getCommand(input,core));
+        worker.execute(commandFactory.getCommand(input,core));
 
         core.notifyObservers();
     }
-/*
-    private void onUnknown() throws Exception {
-        //this.clearCurrent();
-        throw new Exception("Unknown input");
-    }*/
-
-
-    ;
-
-
-
-/*
-
-    private void onUNDO() throws Exception {
-        worker.UNDO();
-    };
-    private void onREDO() throws Exception {
-        worker.REDO();
-    };
-    private void onSTO(){
-        core.setSTOFlag(!core.getSTOFlag());
-    };
-    private void onRCL() {
-        core.setRCLFlag(!core.getRCLFlag());
-    };
-    private void onPROG(){
-        if(!core.getPROGFlag())
-        {
-            worker.PROG_clear();
-        }
-        core.setPROGFlag(!core.getPROGFlag());
-    };
-    private void onEXE(){
-        worker.EXE();
-    };
-
-*/
-
-
-
-
-
 
 
     public RPNCore getCore() {

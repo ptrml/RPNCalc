@@ -105,6 +105,10 @@ public class NormalCommandFactory extends CommandFactory {
         {
             return new DRGCommand(core);
         }
+        else if(c.equals(CharLegend.AC))
+        {
+            return new ACCommand(core);
+        }
 
 
         return null;

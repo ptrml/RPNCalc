@@ -68,7 +68,7 @@ public class Controller implements Observing{
         }
         else
         {
-            Stack_X.setText(calculator.getCore().display.getValue());
+            Stack_X.setText(calculator.getCore().getDisplay().getValue());
             Stack_Y.setText(stack[0].toString());
             Stack_Z.setText(stack[1].toString());
             Stack_T.setText(stack[2].toString());

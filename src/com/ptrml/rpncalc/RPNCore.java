@@ -13,18 +13,13 @@ import java.util.List;
  */
 public class RPNCore implements Observed,MementoOriginator {
 
-    private Character state = CharLegend.STATE_NORMAL;
-    private Character mode = CharLegend.MODE_DEG;
+    private Character state;
+    private Character mode;
 
-    private Boolean RADFlag = false;
     private Boolean PROGFlag = false;
 
-    //private String prebuffer = "";
-
-    RPNDisplay display;
-
-    Double[] memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
-
+    private RPNDisplay display;
+    private Double[] memory_slots;
     private RPNStack stack;
     private List<Observing> observers;
 
@@ -32,7 +27,17 @@ public class RPNCore implements Observed,MementoOriginator {
         this.stack = stack;
         this.observers = new ArrayList<>();
         this.display = new RPNDisplay();
+        this.clearMemory();
     }
+
+    public void clearMemory(){
+        this.setState(CharLegend.STATE_NORMAL);
+        this.setMode(CharLegend.MODE_DEG);
+        this.memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+        this.getDisplay().setNormalValue("");
+
+    }
+
 
     //OBSERVER
     @Override
@@ -71,31 +76,6 @@ public class RPNCore implements Observed,MementoOriginator {
     @Override
     public Memento createMemento() {
         return new Memento(this);
-    }
-
-   /* public Boolean getSTOFlag() {
-        return STOFlag;
-    }
-
-    public void setSTOFlag(Boolean STOFlag) {
-        this.STOFlag = STOFlag;
-    }
-
-    public Boolean getRCLFlag() {
-        return RCLFlag;
-    }
-
-    public void setRCLFlag(Boolean RCLFlag) {
-        this.RCLFlag = RCLFlag;
-    }*/
-
-
-    public Boolean getRADFlag() {
-        return RADFlag;
-    }
-
-    public void setRADFlag(Boolean RADFlag) {
-        this.RADFlag = RADFlag;
     }
 
     public Boolean getPROGFlag() {

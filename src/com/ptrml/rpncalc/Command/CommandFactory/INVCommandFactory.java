@@ -1,6 +1,7 @@
 package com.ptrml.rpncalc.Command.CommandFactory;
 
 import com.ptrml.rpncalc.Command.Command;
+import com.ptrml.rpncalc.Command.SpecialCommand.ACCommand;
 import com.ptrml.rpncalc.Command.SpecialCommand.INVCommand;
 import com.ptrml.rpncalc.Command.UndoableCommand.*;
 import com.ptrml.rpncalc.CharLegend;
@@ -32,6 +33,10 @@ public class INVCommandFactory extends CommandFactory {
         else if(c.equals(CharLegend.TAN))
         {
             return new INVTANCommand(core);
+        }
+        else if(c.equals(CharLegend.AC))
+        {
+            return new ACCommand(core);
         }
 
 

@@ -1,6 +1,7 @@
 package com.ptrml.rpncalc.Command.CommandFactory;
 
 import com.ptrml.rpncalc.Command.Command;
+import com.ptrml.rpncalc.Command.SpecialCommand.ACCommand;
 import com.ptrml.rpncalc.Command.SpecialCommand.RCLCommand;
 import com.ptrml.rpncalc.Command.UndoableCommand.*;
 import com.ptrml.rpncalc.CharLegend;
@@ -25,6 +26,10 @@ public class RCLCommandFactory extends CommandFactory {
         else if(c.equals(CharLegend.ZERO) || c.equals(CharLegend.ONE) || c.equals(CharLegend.TWO) || c.equals(CharLegend.THREE) || c.equals(CharLegend.FOUR) || c.equals(CharLegend.FIVE) || c.equals(CharLegend.SIX) || c.equals(CharLegend.SEVEN) || c.equals(CharLegend.EIGHT) || c.equals(CharLegend.NINE))
         {
             return new RCLNumCommand(core,c);
+        }
+        else if(c.equals(CharLegend.AC))
+        {
+            return new ACCommand(core);
         }
 
 

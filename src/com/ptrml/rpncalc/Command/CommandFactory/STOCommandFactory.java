@@ -1,6 +1,7 @@
 package com.ptrml.rpncalc.Command.CommandFactory;
 
 import com.ptrml.rpncalc.Command.Command;
+import com.ptrml.rpncalc.Command.SpecialCommand.ACCommand;
 import com.ptrml.rpncalc.Command.SpecialCommand.STOCommand;
 import com.ptrml.rpncalc.Command.SpecialCommand.STONumCommand;
 import com.ptrml.rpncalc.CharLegend;
@@ -24,6 +25,10 @@ public class STOCommandFactory extends CommandFactory {
         else if(c.equals(CharLegend.ZERO) || c.equals(CharLegend.ONE) || c.equals(CharLegend.TWO) || c.equals(CharLegend.THREE) || c.equals(CharLegend.FOUR) || c.equals(CharLegend.FIVE) || c.equals(CharLegend.SIX) || c.equals(CharLegend.SEVEN) || c.equals(CharLegend.EIGHT) || c.equals(CharLegend.NINE))
         {
             return new STONumCommand(core,c);
+        }
+        else if(c.equals(CharLegend.AC))
+        {
+            return new ACCommand(core);
         }
 
 
