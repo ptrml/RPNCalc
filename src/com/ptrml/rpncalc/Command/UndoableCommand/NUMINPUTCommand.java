@@ -8,15 +8,15 @@ import com.ptrml.rpncalc.RPNCore;
  * Created by ptrml on 2/7/2017.
  */
 public class NUMINPUTCommand extends UndoableCommand implements EnterableCommand {
-    String current_str;
 
     public NUMINPUTCommand(RPNCore core) {
         super(core);
-        current_str = core.getDisplay().getValue();//have to get value here, display blanked in worker
+
     }
 
     @Override
     public void executable() {
+        String current_str = core.getDisplay().getValue();
         Double current = Double.parseDouble(current_str);
         core.getDisplay().setNormalValue("");
         core.getStack().push(current);

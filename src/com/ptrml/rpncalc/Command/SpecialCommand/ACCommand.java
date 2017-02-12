@@ -16,7 +16,7 @@ public class ACCommand extends SpecialCommand {
     @Override
     public void executable() {
 
-        core.clearMemory();
+        core.clear();
     }
 
 }

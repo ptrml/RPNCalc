@@ -16,11 +16,11 @@ public class INVSINCommand extends UndoableCommand {
         Double x = core.getStack().pull();
         Double calculated;
 
-        if(core.getMode()== CharLegend.MODE_DEG)
+        if(core.getTrigMode()== CharLegend.MODE_DEG)
             calculated = Math.toDegrees(Math.asin((x)));
-        else if (core.getMode()== CharLegend.MODE_GRAD)
+        else if (core.getTrigMode()== CharLegend.MODE_GRAD)
             calculated = Math.asin(x) * 63.663;
-        else if (core.getMode()== CharLegend.MODE_RAD)
+        else if (core.getTrigMode()== CharLegend.MODE_RAD)
             calculated = Math.asin((x));
         else
             throw new Exception("Unknown trig mode");

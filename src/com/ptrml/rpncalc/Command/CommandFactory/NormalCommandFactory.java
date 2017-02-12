@@ -109,6 +109,14 @@ public class NormalCommandFactory extends CommandFactory {
         {
             return new ACCommand(core);
         }
+        else if(c.equals(CharLegend.PROG))
+        {
+            return new PROGCommand(core);
+        }
+        else if(c.equals(CharLegend.EXE))
+        {
+            return new EXECommand(core);
+        }
 
 
         return null;

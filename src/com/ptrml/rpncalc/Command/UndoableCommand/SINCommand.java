@@ -19,11 +19,11 @@ public class SINCommand extends UndoableCommand {
 
         Double calculated;
 
-        if(core.getMode()== CharLegend.MODE_DEG)
+        if(core.getTrigMode()== CharLegend.MODE_DEG)
             calculated = Math.sin(Math.toRadians(x));
-        else if (core.getMode()== CharLegend.MODE_GRAD)
+        else if (core.getTrigMode()== CharLegend.MODE_GRAD)
             calculated = Math.sin(Math.PI * x / 200);
-        else if (core.getMode()== CharLegend.MODE_RAD)
+        else if (core.getTrigMode()== CharLegend.MODE_RAD)
             calculated = Math.sin((x));
         else
             throw new Exception("Unknown trig mode");

@@ -14,27 +14,36 @@ import java.util.List;
 public class RPNCore implements Observed,MementoOriginator {
 
     private Character state;
-    private Character mode;
-
+    private Character trig_mode;
     private Boolean PROGFlag = false;
 
+
     private RPNDisplay display;
-    private Double[] memory_slots;
     private RPNStack stack;
     private List<Observing> observers;
 
-    public RPNCore(RPNStack stack) {
-        this.stack = stack;
+    private MemorySlotManager memorySlotManager;
+    private ProgramManager programManager;
+
+    public RPNCore() {
+        this.stack = new RPNStack();
         this.observers = new ArrayList<>();
         this.display = new RPNDisplay();
-        this.clearMemory();
+        this.memorySlotManager = new MemorySlotManager();
+        this.programManager = new ProgramManager();
+        this.clear();
     }
 
-    public void clearMemory(){
+    public void clear(){
         this.setState(CharLegend.STATE_NORMAL);
-        this.setMode(CharLegend.MODE_DEG);
-        this.memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+        this.setTrigMode(CharLegend.MODE_DEG);
+        this.setPROGFlag(false);
         this.getDisplay().setNormalValue("");
+        this.getStack().clearStack();
+        //this.memorySlotManager.clearSlots();
+        //this.programManager.clearProgram_slots();
+
+        notifyObservers();
 
     }
 
@@ -104,21 +113,21 @@ public class RPNCore implements Observed,MementoOriginator {
         notifyObservers();
     }
 
-    public Double getMemory_slot(Integer slot) {
-        return memory_slots[slot];
+    public MemorySlotManager getMemorySlotManager() {
+        return memorySlotManager;
     }
 
-    public void setMemory_slot(Integer slot, Double input) {
-        this.memory_slots[slot] = input;
+    public Character getTrigMode() {
+        return trig_mode;
     }
 
-    public Character getMode() {
-        return mode;
-    }
-
-    public void setMode(Character mode) {
-        this.mode = mode;
+    public void setTrigMode(Character mode) {
+        this.trig_mode = mode;
 
         notifyObservers();
+    }
+
+    public ProgramManager getProgramManager() {
+        return programManager;
     }
 }

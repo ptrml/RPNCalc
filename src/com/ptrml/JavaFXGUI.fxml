@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ptrml.rpncalc.Controller">
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ptrml.JavaFXController">
    <fx:define>
        <Font fx:id="FONT" size="18" />
        <Font fx:id="FONT_SPECIAL" size="10" />
@@ -65,8 +66,8 @@
     <VBox id="" alignment="CENTER" spacing="5">
       <GridPane>
         <columnConstraints>
-          <ColumnConstraints maxWidth="95.0" minWidth="10.0" prefWidth="63.0" />
-          <ColumnConstraints maxWidth="144.0" minWidth="10.0" prefWidth="137.0" />
+          <ColumnConstraints maxWidth="95.0" minWidth="10.0" prefWidth="68.0" />
+          <ColumnConstraints maxWidth="158.0" minWidth="10.0" prefWidth="132.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints vgrow="SOMETIMES" />
@@ -89,11 +90,16 @@
                       </font>
                </Button>
               </HBox>
-             <Button id="%AC" onAction="#processInput"  text="ON/AC">
+             <HBox id="" alignment="CENTER_LEFT" prefHeight="18.0" prefWidth="51.0" spacing="5.0">
+             <Button id="%AC" onAction="#processInput" text="ON/AC">
                    <font>
                        <Font size="8.0" />
                    </font>
                </Button>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+             </HBox>
          </children>
       </GridPane>
         <HBox id="" alignment="CENTER_RIGHT" spacing="5">
@@ -113,6 +119,9 @@
                 <font>
                     <Font size="8.0" />
                 </font></Button>
+         <padding>
+            <Insets right="5.0" />
+         </padding>
 
         </HBox>
 

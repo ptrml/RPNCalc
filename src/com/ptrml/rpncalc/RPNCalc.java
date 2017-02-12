@@ -2,27 +2,15 @@ package com.ptrml.rpncalc;
 
 
 import com.ptrml.rpncalc.Command.CommandFactory.*;
+import com.ptrml.rpncalc.RPNWorker.RPNWorker;
 import com.ptrml.rpncalc.RPNWorker.RPNWorker_Calculate;
+import com.ptrml.rpncalc.RPNWorker.RPNWorker_Program;
 
 /**
  * Created by ptrml on 1/5/2017.
  */
 public class RPNCalc {
 
-    //TODO RADS/DEG
-    //TODO insert command za program?
-    //TODO chain of responsibility shablon
-    //TODO veke ima mediator so worker i gui
-    //TODO S pattern
-
-
-    //TODO treba da ima grd komanda i toa vo stekot da postavuva sto se slucuva
-    //TODO state pattern za STO,RCL i INV so svoi builderi
-    //TODO posledniot input dali bil enter, broj ili obicen command mozebi state na worker a ona gore state na calc
-
-
-    private RPNStack stack;
-    private RPNWorker_Calculate worker;
     private RPNCore core;
     private CommandFactory commandFactory;
     private NormalCommandFactory normalCommandFactory;
@@ -30,12 +18,17 @@ public class RPNCalc {
     private RCLCommandFactory rclCommandFactory;
     private STOCommandFactory stoCommandFactory;
 
+    private RPNWorker rpnWorker;
+    private RPNWorker_Calculate rpnWorker_calculate;
+    private RPNWorker_Program rpnWorker_program;
+
 
 
     public RPNCalc() {
-        stack = new RPNStack();
-        core = new RPNCore(stack);
-        worker = new RPNWorker_Calculate(core);
+        core = new RPNCore();
+
+        rpnWorker_calculate = new RPNWorker_Calculate(core);
+        rpnWorker_program = new RPNWorker_Program(core);
 
         normalCommandFactory = new NormalCommandFactory();
         invCommandFactory = new INVCommandFactory();
@@ -49,11 +42,9 @@ public class RPNCalc {
 
         this.setState(core);
 
-        worker.execute(commandFactory.getCommand(input,core));
+        rpnWorker.execute(commandFactory.getCommand(input,core));
 
-        core.notifyObservers();
     }
-
 
     public RPNCore getCore() {
         return core;
@@ -70,6 +61,10 @@ public class RPNCalc {
         else if (core.getState() == CharLegend.STATE_STO)
             commandFactory = stoCommandFactory;
 
+        if(core.getPROGFlag())
+            rpnWorker = rpnWorker_program;
+        else
+            rpnWorker = rpnWorker_calculate;
     }
 }
 

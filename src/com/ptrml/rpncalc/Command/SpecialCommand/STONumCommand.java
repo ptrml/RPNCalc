@@ -18,9 +18,9 @@ public class STONumCommand extends SpecialCommand {
         Integer slot = (Integer.parseInt(input.toString()));
 
         if(core.getDisplay().isEmpty())
-            core.setMemory_slot(slot,(core.getStack().getCurrentStack())[0]);
+            core.getMemorySlotManager().setMemory_slot(slot,(core.getStack().getCurrentStack())[0]);
         else
-            core.setMemory_slot(slot,Double.parseDouble(core.getDisplay().getValue()));
+            core.getMemorySlotManager().setMemory_slot(slot,Double.parseDouble(core.getDisplay().getValue()));
 
 
 

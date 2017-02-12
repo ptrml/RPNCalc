@@ -1,6 +1,7 @@
 package com.ptrml.rpncalc.Command.SpecialCommand;
 
 import com.ptrml.rpncalc.CharLegend;
+import com.ptrml.rpncalc.Command.Command;
 import com.ptrml.rpncalc.RPNCore;
 
 /**
@@ -13,15 +14,12 @@ public class EXECommand extends SpecialCommand {
     }
 
     @Override
-    public void executable() {
-        if(core.getMode()==CharLegend.MODE_DEG)
-            core.setMode(CharLegend.MODE_RAD);
-
-        else if(core.getMode()==CharLegend.MODE_RAD)
-            core.setMode(CharLegend.MODE_GRAD);
-
-        else if(core.getMode()==CharLegend.MODE_GRAD)
-            core.setMode(CharLegend.MODE_DEG);
+    public void executable() throws Exception {
+        for(Command cmd : core.getProgramManager().getProgram_slots()) {
+            if (cmd != null) {
+                cmd.execute();
+            }
+        }
     }
 
 }

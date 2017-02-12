@@ -5,8 +5,8 @@ package com.ptrml.rpncalc;
  */
 public class RPNDisplay {
 
-    String value = "";
-    Boolean isVolatile = false;
+    private String value = "";
+    private Boolean isVolatile = false;
 
     public void setVolitileValue(String input)
     {
@@ -16,6 +16,10 @@ public class RPNDisplay {
 
     public String getValue() {
         return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     public void setNormalValue(String value) {

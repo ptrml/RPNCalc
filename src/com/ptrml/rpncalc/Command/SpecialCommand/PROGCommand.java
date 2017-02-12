@@ -14,14 +14,10 @@ public class PROGCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        if(core.getMode()==CharLegend.MODE_DEG)
-            core.setMode(CharLegend.MODE_RAD);
-
-        else if(core.getMode()==CharLegend.MODE_RAD)
-            core.setMode(CharLegend.MODE_GRAD);
-
-        else if(core.getMode()==CharLegend.MODE_GRAD)
-            core.setMode(CharLegend.MODE_DEG);
+        if(!core.getPROGFlag()){
+            core.getProgramManager().clearProgram_slots();
+        }
+        core.setPROGFlag(!core.getPROGFlag());
     }
 
 }

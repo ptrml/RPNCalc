@@ -13,12 +13,12 @@ abstract public class SpecialCommand extends Command {
         super(core);
     }
 
-    public void execute()
-    {
+    public void execute() throws Exception {
         //TODO template
         this.executable();
+        core.notifyObservers();
     };
 
-    public abstract void executable();
+    public abstract void executable() throws Exception;
 
 }

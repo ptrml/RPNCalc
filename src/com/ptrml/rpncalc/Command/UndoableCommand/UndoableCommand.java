@@ -27,7 +27,8 @@ abstract public class UndoableCommand extends Command {
         undoHandler.addMemento(core.createMemento());
 
         this.executable();
-        System.out.println("creating memo");
+        core.notifyObservers();
+        System.out.println(this.getClass());
     };
 
     abstract public void executable() throws Exception;

@@ -18,11 +18,11 @@ public class COSCommand extends UndoableCommand {
 
         Double calculated;
 
-        if(core.getMode()== CharLegend.MODE_DEG)
+        if(core.getTrigMode()== CharLegend.MODE_DEG)
             calculated = Math.cos(Math.toRadians(x));
-        else if (core.getMode()== CharLegend.MODE_GRAD)
+        else if (core.getTrigMode()== CharLegend.MODE_GRAD)
             calculated = Math.cos(Math.PI * x / 200);
-        else if (core.getMode()== CharLegend.MODE_RAD)
+        else if (core.getTrigMode()== CharLegend.MODE_RAD)
             calculated = Math.cos((x));
         else
             throw new Exception("Unknown trig mode");
