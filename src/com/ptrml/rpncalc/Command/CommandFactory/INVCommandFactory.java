@@ -18,23 +18,23 @@ public class INVCommandFactory extends CommandFactory {
      */
     public Command getCommand(Character c, RPNCore core) {
 
-        if(c.equals(CharLegend.INV))
+        if(c.equals(CharLegend.getInstance().INV))
         {
             return new INVCommand(core);
         }
-        if(c.equals(CharLegend.COS))
+        if(c.equals(CharLegend.getInstance().COS))
         {
             return new INVCOSCommand(core);
         }
-        else if(c.equals(CharLegend.SIN))
+        else if(c.equals(CharLegend.getInstance().SIN))
         {
             return new INVSINCommand(core);
         }
-        else if(c.equals(CharLegend.TAN))
+        else if(c.equals(CharLegend.getInstance().TAN))
         {
             return new INVTANCommand(core);
         }
-        else if(c.equals(CharLegend.AC))
+        else if(c.equals(CharLegend.getInstance().AC))
         {
             return new ACCommand(core);
         }

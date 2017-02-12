@@ -26,7 +26,7 @@ public class STONumCommand extends SpecialCommand {
 
 
 
-        core.setState(CharLegend.STATE_NORMAL);
+        core.setState(CharLegend.getInstance().STATE_NORMAL);
 
 
 

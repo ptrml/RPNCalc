@@ -35,8 +35,8 @@ public class RPNCore implements Observed,MementoOriginator {
     }
 
     public void clear(){
-        this.setState(CharLegend.STATE_NORMAL);
-        this.setTrigMode(CharLegend.MODE_DEG);
+        this.setState(CharLegend.getInstance().STATE_NORMAL);
+        this.setTrigMode(CharLegend.getInstance().MODE_DEG);
         this.setPROGFlag(false);
         this.getDisplay().setNormalValue("");
         this.getStack().clearStack();

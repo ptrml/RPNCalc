@@ -19,7 +19,7 @@ public class RCLNumCommand extends UndoableCommand {
         core.getDisplay().setNormalValue("");
         core.getStack().push(reclaimed);
 
-        core.setState(CharLegend.STATE_NORMAL);
+        core.setState(CharLegend.getInstance().STATE_NORMAL);
 
 
 

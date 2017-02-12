@@ -14,10 +14,10 @@ public class STOCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        if(core.getState() != CharLegend.STATE_STO)
-            core.setState(CharLegend.STATE_STO);
+        if(core.getState() != CharLegend.getInstance().STATE_STO)
+            core.setState(CharLegend.getInstance().STATE_STO);
         else
-            core.setState(CharLegend.STATE_NORMAL);
+            core.setState(CharLegend.getInstance().STATE_NORMAL);
     }
 
 }

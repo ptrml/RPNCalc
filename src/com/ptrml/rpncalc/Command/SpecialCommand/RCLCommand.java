@@ -14,10 +14,10 @@ public class RCLCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        if(core.getState() != CharLegend.STATE_RCL)
-            core.setState(CharLegend.STATE_RCL);
+        if(core.getState() != CharLegend.getInstance().STATE_RCL)
+            core.setState(CharLegend.getInstance().STATE_RCL);
         else
-            core.setState(CharLegend.STATE_NORMAL);
+            core.setState(CharLegend.getInstance().STATE_NORMAL);
     }
 
 }

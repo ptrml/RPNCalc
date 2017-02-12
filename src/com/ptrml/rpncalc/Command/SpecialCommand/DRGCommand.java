@@ -14,14 +14,14 @@ public class DRGCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        if(core.getTrigMode()==CharLegend.MODE_DEG)
-            core.setTrigMode(CharLegend.MODE_RAD);
+        if(core.getTrigMode()==CharLegend.getInstance().MODE_DEG)
+            core.setTrigMode(CharLegend.getInstance().MODE_RAD);
 
-        else if(core.getTrigMode()==CharLegend.MODE_RAD)
-            core.setTrigMode(CharLegend.MODE_GRAD);
+        else if(core.getTrigMode()==CharLegend.getInstance().MODE_RAD)
+            core.setTrigMode(CharLegend.getInstance().MODE_GRAD);
 
-        else if(core.getTrigMode()==CharLegend.MODE_GRAD)
-            core.setTrigMode(CharLegend.MODE_DEG);
+        else if(core.getTrigMode()==CharLegend.getInstance().MODE_GRAD)
+            core.setTrigMode(CharLegend.getInstance().MODE_DEG);
     }
 
 }

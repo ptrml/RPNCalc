@@ -14,10 +14,10 @@ public class INVCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        if(core.getState() != CharLegend.STATE_INV)
-            core.setState(CharLegend.STATE_INV);
+        if(core.getState() != CharLegend.getInstance().STATE_INV)
+            core.setState(CharLegend.getInstance().STATE_INV);
         else
-            core.setState(CharLegend.STATE_NORMAL);
+            core.setState(CharLegend.getInstance().STATE_NORMAL);
     }
 
 }

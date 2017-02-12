@@ -75,12 +75,12 @@ public class JavaFXController implements Observing{
 
         PROGFlag.setOpacity(opacity[calculator.getCore().getPROGFlag() ? 1 : 0]);
 
-        RADFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.MODE_RAD) ? 1 : 0]);
-        GRADFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.MODE_GRAD) ? 1 : 0]);
-        DEGFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.MODE_DEG) ? 1 : 0]);
-        STOFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.STATE_STO) ? 1 : 0]);
-        RCLFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.STATE_RCL) ? 1 : 0]);
-        INVFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.STATE_INV) ? 1 : 0]);
+        RADFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.getInstance().MODE_RAD) ? 1 : 0]);
+        GRADFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.getInstance().MODE_GRAD) ? 1 : 0]);
+        DEGFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.getInstance().MODE_DEG) ? 1 : 0]);
+        STOFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.getInstance().STATE_STO) ? 1 : 0]);
+        RCLFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.getInstance().STATE_RCL) ? 1 : 0]);
+        INVFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.getInstance().STATE_INV) ? 1 : 0]);
 
     }
 

@@ -16,11 +16,11 @@ public class INVTANCommand extends UndoableCommand {
         Double x = core.getStack().pull();
         Double calculated;
 
-        if(core.getTrigMode()== CharLegend.MODE_DEG)
+        if(core.getTrigMode()== CharLegend.getInstance().MODE_DEG)
             calculated = Math.toDegrees(Math.atan((x)));
-        else if (core.getTrigMode()== CharLegend.MODE_GRAD)
+        else if (core.getTrigMode()== CharLegend.getInstance().MODE_GRAD)
             calculated = Math.atan(x) * 63.663;
-        else if (core.getTrigMode()== CharLegend.MODE_RAD)
+        else if (core.getTrigMode()== CharLegend.getInstance().MODE_RAD)
             calculated = Math.atan((x));
         else
             throw new Exception("Unknown trig mode");
@@ -28,7 +28,7 @@ public class INVTANCommand extends UndoableCommand {
 
         core.getStack().push(calculated);
 
-        core.setState(CharLegend.STATE_NORMAL);
+        core.setState(CharLegend.getInstance().STATE_NORMAL);
     }
 
 }

@@ -52,13 +52,13 @@ public class RPNCalc {
 
     private void setState(RPNCore core)
     {
-        if(core.getState() == CharLegend.STATE_NORMAL)
+        if(core.getState() == CharLegend.getInstance().STATE_NORMAL)
             commandFactory = normalCommandFactory;
-        else if (core.getState() == CharLegend.STATE_INV)
+        else if (core.getState() == CharLegend.getInstance().STATE_INV)
             commandFactory = invCommandFactory;
-        else if (core.getState() == CharLegend.STATE_RCL)
+        else if (core.getState() == CharLegend.getInstance().STATE_RCL)
             commandFactory = rclCommandFactory;
-        else if (core.getState() == CharLegend.STATE_STO)
+        else if (core.getState() == CharLegend.getInstance().STATE_STO)
             commandFactory = stoCommandFactory;
 
         if(core.getPROGFlag())

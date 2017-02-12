@@ -18,15 +18,15 @@ public class STOCommandFactory extends CommandFactory {
      */
     public Command getCommand(Character c, RPNCore core) {
 
-        if(c.equals(CharLegend.STO))
+        if(c.equals(CharLegend.getInstance().STO))
         {
             return new STOCommand(core);
         }
-        else if(c.equals(CharLegend.ZERO) || c.equals(CharLegend.ONE) || c.equals(CharLegend.TWO) || c.equals(CharLegend.THREE) || c.equals(CharLegend.FOUR) || c.equals(CharLegend.FIVE) || c.equals(CharLegend.SIX) || c.equals(CharLegend.SEVEN) || c.equals(CharLegend.EIGHT) || c.equals(CharLegend.NINE))
+        else if(c.equals(CharLegend.getInstance().ZERO) || c.equals(CharLegend.getInstance().ONE) || c.equals(CharLegend.getInstance().TWO) || c.equals(CharLegend.getInstance().THREE) || c.equals(CharLegend.getInstance().FOUR) || c.equals(CharLegend.getInstance().FIVE) || c.equals(CharLegend.getInstance().SIX) || c.equals(CharLegend.getInstance().SEVEN) || c.equals(CharLegend.getInstance().EIGHT) || c.equals(CharLegend.getInstance().NINE))
         {
             return new STONumCommand(core,c);
         }
-        else if(c.equals(CharLegend.AC))
+        else if(c.equals(CharLegend.getInstance().AC))
         {
             return new ACCommand(core);
         }
