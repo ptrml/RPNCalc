@@ -38,5 +38,11 @@ public class ProgramManager {
         return (cursor >= max);
     }
 
+    public Integer getCursor() {
+        return cursor;
+    }
 
+    public Integer getMax() {
+        return max;
+    }
 }

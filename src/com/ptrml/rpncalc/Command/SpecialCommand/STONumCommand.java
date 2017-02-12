@@ -17,18 +17,10 @@ public class STONumCommand extends SpecialCommand {
     public void executable() {
         Integer slot = (Integer.parseInt(input.toString()));
 
-        if(core.getDisplay().isEmpty())
+        if(core.getNumComposer().isEmpty())
             core.getMemorySlotManager().setMemory_slot(slot,(core.getStack().getCurrentStack())[0]);
         else
-            core.getMemorySlotManager().setMemory_slot(slot,Double.parseDouble(core.getDisplay().getValue()));
-
-
-
-
-
-        core.setState(CharLegend.getInstance().STATE_NORMAL);
-
-
+            core.getMemorySlotManager().setMemory_slot(slot,Double.parseDouble(core.getNumComposer().getValue()));
 
     }
 

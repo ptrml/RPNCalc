@@ -16,7 +16,7 @@ public class DigitEnteredCommand extends UndoableCommand implements EnterableCom
 
     @Override
     public void executable() {
-        core.getDisplay().appendValue(input);
+        core.getNumComposer().appendValue(input);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.ptrml.rpncalc.RPNWorker;
 
 import com.ptrml.rpncalc.Command.Command;
+import com.ptrml.rpncalc.Command.EnterableCommand;
 import com.ptrml.rpncalc.Command.UndoableCommand.NUMINPUTCommand;
 import com.ptrml.rpncalc.Command.UndoableCommand.UndoableCommand;
 import com.ptrml.rpncalc.RPNCore;
@@ -19,6 +20,10 @@ public class RPNWorker_Calculate extends RPNWorker {
     public void execute(Command command) throws Exception {
         if(command != null)
         {
+            //purge display
+            if(!core.getNumComposer().isEmpty() && !(command instanceof EnterableCommand))
+                new NUMINPUTCommand(core).execute();
+
             command.execute();
         }
     }

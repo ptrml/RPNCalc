@@ -28,7 +28,6 @@ public class INVTANCommand extends UndoableCommand {
 
         core.getStack().push(calculated);
 
-        core.setState(CharLegend.getInstance().STATE_NORMAL);
     }
 
 }

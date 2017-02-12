@@ -15,8 +15,8 @@ public class Memento {
     public Memento(RPNCore core) {
 
         this.stack = core.getStack().getCurrentStack();
-        this.displayVolatile = core.getDisplay().getIsVolatile();
-        this.displayVal = core.getDisplay().getValue();
+        this.displayVolatile = core.getNumComposer().getIsVolatile();
+        this.displayVal = core.getNumComposer().getValue();
 
     }
 

@@ -18,7 +18,7 @@ public class RPNCore implements Observed,MementoOriginator {
     private Boolean PROGFlag = false;
 
 
-    private RPNDisplay display;
+    private RPNNumComposer numComposer;
     private RPNStack stack;
     private List<Observing> observers;
 
@@ -28,7 +28,7 @@ public class RPNCore implements Observed,MementoOriginator {
     public RPNCore() {
         this.stack = new RPNStack();
         this.observers = new ArrayList<>();
-        this.display = new RPNDisplay();
+        this.numComposer = new RPNNumComposer();
         this.memorySlotManager = new MemorySlotManager();
         this.programManager = new ProgramManager();
         this.clear();
@@ -38,7 +38,7 @@ public class RPNCore implements Observed,MementoOriginator {
         this.setState(CharLegend.getInstance().STATE_NORMAL);
         this.setTrigMode(CharLegend.getInstance().MODE_DEG);
         this.setPROGFlag(false);
-        this.getDisplay().setNormalValue("");
+        this.getNumComposer().setNormalValue("");
         this.getStack().clearStack();
         //this.memorySlotManager.clearSlots();
         //this.programManager.clearProgram_slots();
@@ -71,12 +71,12 @@ public class RPNCore implements Observed,MementoOriginator {
     @Override
     public void setState(Memento coreMemento) {
         stack.flashCurrentStack(coreMemento.getStack());
-        this.getDisplay().setNormalValue("");
+        this.getNumComposer().setNormalValue("");
 
         if(coreMemento.getDisplayVolatile())
-            this.getDisplay().setVolitileValue(coreMemento.getDisplayVal());
+            this.getNumComposer().setVolatileValue(coreMemento.getDisplayVal());
         else
-            this.getDisplay().setNormalValue(coreMemento.getDisplayVal());
+            this.getNumComposer().setNormalValue(coreMemento.getDisplayVal());
 
 
         notifyObservers();
@@ -99,8 +99,8 @@ public class RPNCore implements Observed,MementoOriginator {
         return stack;
     }
 
-    public RPNDisplay getDisplay(){
-        return this.display;
+    public RPNNumComposer getNumComposer(){
+        return this.numComposer;
     };
 
     public Character getState() {

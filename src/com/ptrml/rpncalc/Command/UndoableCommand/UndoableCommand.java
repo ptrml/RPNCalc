@@ -18,10 +18,6 @@ abstract public class UndoableCommand extends Command {
 
     public void execute() throws Exception {
 
-        //purge display
-        if(!core.getDisplay().isEmpty() && !(this instanceof EnterableCommand))
-            new NUMINPUTCommand(core).execute();
-
 
         MementoCaretaker undoHandler = MementoCaretaker.getInstance();
         undoHandler.addMemento(core.createMemento());

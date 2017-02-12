@@ -18,7 +18,6 @@ public class NormalCommandFactory extends CommandFactory {
     public Command getCommand(Character c, RPNCore core) {
 
 
-        System.out.println(CharLegend.getInstance().ONE + " " + c);
         if(c.equals(CharLegend.getInstance().ACOS))
         {
             return new INVCOSCommand(core);

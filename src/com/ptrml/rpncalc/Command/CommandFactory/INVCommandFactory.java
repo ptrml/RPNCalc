@@ -18,6 +18,7 @@ public class INVCommandFactory extends CommandFactory {
      */
     public Command getCommand(Character c, RPNCore core) {
 
+        core.setState(CharLegend.getInstance().STATE_NORMAL);
         if(c.equals(CharLegend.getInstance().INV))
         {
             return new INVCommand(core);
@@ -37,6 +38,7 @@ public class INVCommandFactory extends CommandFactory {
         else if(c.equals(CharLegend.getInstance().AC))
         {
             return new ACCommand(core);
+
         }
 
 

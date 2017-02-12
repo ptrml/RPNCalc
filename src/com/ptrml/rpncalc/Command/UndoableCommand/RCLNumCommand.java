@@ -16,13 +16,8 @@ public class RCLNumCommand extends UndoableCommand {
     @Override
     public void executable() {
         Double reclaimed = core.getMemorySlotManager().getMemory_slot(Integer.parseInt(input.toString()));
-        core.getDisplay().setNormalValue("");
+        core.getNumComposer().setNormalValue("");
         core.getStack().push(reclaimed);
-
-        core.setState(CharLegend.getInstance().STATE_NORMAL);
-
-
-
     }
 
 

@@ -19,6 +19,7 @@ public class RCLCommandFactory extends CommandFactory {
     public Command getCommand(Character c, RPNCore core) {
 
 
+        core.setState(CharLegend.getInstance().STATE_NORMAL);
         if(c.equals(CharLegend.getInstance().RCL))
         {
             return new RCLCommand(core);

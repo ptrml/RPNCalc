@@ -18,6 +18,7 @@ public class STOCommandFactory extends CommandFactory {
      */
     public Command getCommand(Character c, RPNCore core) {
 
+        core.setState(CharLegend.getInstance().STATE_NORMAL);
         if(c.equals(CharLegend.getInstance().STO))
         {
             return new STOCommand(core);

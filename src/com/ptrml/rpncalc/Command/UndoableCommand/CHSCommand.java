@@ -15,7 +15,7 @@ public class CHSCommand extends UndoableCommand implements EnterableCommand {
     @Override
     public void executable() {
 
-        if(core.getDisplay().isEmpty())
+        if(core.getNumComposer().isEmpty())
         {
             Double x = core.getStack().pull();
             x*=-1;
@@ -23,7 +23,7 @@ public class CHSCommand extends UndoableCommand implements EnterableCommand {
         }
         else
         {
-            core.getDisplay().setValue("-"+(core.getDisplay().getValue()));
+            core.getNumComposer().setValue("-"+(core.getNumComposer().getValue()));
         }
 
     }

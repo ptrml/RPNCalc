@@ -58,7 +58,7 @@ public class JavaFXController implements Observing{
         Double opacity[] = {0.1,0.9};
 
 
-        if(calculator.getCore().getDisplay().isEmpty())
+        if(calculator.getCore().getNumComposer().isEmpty())
         {
             Stack_X.setText(stack[0].toString());
             Stack_Y.setText(stack[1].toString());
@@ -67,7 +67,7 @@ public class JavaFXController implements Observing{
         }
         else
         {
-            Stack_X.setText(calculator.getCore().getDisplay().getValue());
+            Stack_X.setText(calculator.getCore().getNumComposer().getValue());
             Stack_Y.setText(stack[0].toString());
             Stack_Z.setText(stack[1].toString());
             Stack_T.setText(stack[2].toString());

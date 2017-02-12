@@ -3,12 +3,12 @@ package com.ptrml.rpncalc;
 /**
  * Created by ptrml on 2/11/2017.
  */
-public class RPNDisplay {
+public class RPNNumComposer {
 
     private String value = "";
     private Boolean isVolatile = false;
 
-    public void setVolitileValue(String input)
+    public void setVolatileValue(String input)
     {
         value = input;
         isVolatile = true;
