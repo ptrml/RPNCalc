@@ -1,5 +1,6 @@
 package com.ptrml.JavaFXGUI;
 
+import com.ptrml.GUIController;
 import com.ptrml.rpncalc.CharLegend;
 import com.ptrml.rpncalc.Observe.Observing;
 import com.ptrml.rpncalc.RPNCalc;
@@ -8,9 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class JavaFXController implements Observing{
+public class JavaFXController extends GUIController {
 
-    RPNCalc calculator;
 
     @FXML
     private Label Stack_X;
@@ -44,21 +44,19 @@ public class JavaFXController implements Observing{
     @FXML
     private void initialize(){
 
-        calculator = new RPNCalc();
-        calculator.getCore().registerObserver(this);
-        this.notifyObserving();
+        this.register();
     }
 
 
 
     @Override
     public void notifyObserving() {
-        Double[] stack = calculator.getCore().getStack().getCurrentStack();
+        Double[] stack = rpnCalc.getCore().getStack().getCurrentStack();
 
         Double opacity[] = {0.1,0.9};
 
 
-        if(calculator.getCore().getNumComposer().isEmpty())
+        if(rpnCalc.getCore().getNumComposer().isEmpty())
         {
             Stack_X.setText(stack[0].toString());
             Stack_Y.setText(stack[1].toString());
@@ -67,34 +65,30 @@ public class JavaFXController implements Observing{
         }
         else
         {
-            Stack_X.setText(calculator.getCore().getNumComposer().getValue());
+            Stack_X.setText(rpnCalc.getCore().getNumComposer().getValue());
             Stack_Y.setText(stack[0].toString());
             Stack_Z.setText(stack[1].toString());
             Stack_T.setText(stack[2].toString());
         }
 
-        PROGFlag.setOpacity(opacity[calculator.getCore().getPROGFlag() ? 1 : 0]);
+        PROGFlag.setOpacity(opacity[rpnCalc.getCore().getPROGFlag() ? 1 : 0]);
 
-        RADFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.getInstance().MODE_RAD) ? 1 : 0]);
-        GRADFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.getInstance().MODE_GRAD) ? 1 : 0]);
-        DEGFlag.setOpacity(opacity[(calculator.getCore().getTrigMode() == CharLegend.getInstance().MODE_DEG) ? 1 : 0]);
-        STOFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.getInstance().STATE_STO) ? 1 : 0]);
-        RCLFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.getInstance().STATE_RCL) ? 1 : 0]);
-        INVFlag.setOpacity(opacity[(calculator.getCore().getState() == CharLegend.getInstance().STATE_INV) ? 1 : 0]);
+        RADFlag.setOpacity(opacity[(rpnCalc.getCore().getTrigMode() == CharLegend.getInstance().MODE_RAD) ? 1 : 0]);
+        GRADFlag.setOpacity(opacity[(rpnCalc.getCore().getTrigMode() == CharLegend.getInstance().MODE_GRAD) ? 1 : 0]);
+        DEGFlag.setOpacity(opacity[(rpnCalc.getCore().getTrigMode() == CharLegend.getInstance().MODE_DEG) ? 1 : 0]);
+        STOFlag.setOpacity(opacity[(rpnCalc.getCore().getState() == CharLegend.getInstance().STATE_STO) ? 1 : 0]);
+        RCLFlag.setOpacity(opacity[(rpnCalc.getCore().getState() == CharLegend.getInstance().STATE_RCL) ? 1 : 0]);
+        INVFlag.setOpacity(opacity[(rpnCalc.getCore().getState() == CharLegend.getInstance().STATE_INV) ? 1 : 0]);
 
     }
 
-    @Override
-    public void unregister() {
-        calculator.getCore().unregisterObserver(this);
-    }
 
     public void processInput(ActionEvent actionEvent) {
 
         Character input = ((Button)actionEvent.getSource()).getId().charAt(0);
 
         try {
-            calculator.input(input);
+            rpnCalc.input(input);
         } catch (Exception e) {
             System.err.println(e.getMessage());
             e.printStackTrace();
@@ -103,6 +97,6 @@ public class JavaFXController implements Observing{
 
     public RPNCalc getCalculator()
     {
-        return calculator;
+        return rpnCalc;
     }
 }

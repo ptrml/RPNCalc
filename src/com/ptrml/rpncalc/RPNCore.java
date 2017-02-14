@@ -1,6 +1,7 @@
 package com.ptrml.rpncalc;
 
 import com.ptrml.rpncalc.UndoHandler.Memento;
+import com.ptrml.rpncalc.UndoHandler.MementoCaretaker;
 import com.ptrml.rpncalc.UndoHandler.MementoOriginator;
 import com.ptrml.rpncalc.Observe.Observed;
 import com.ptrml.rpncalc.Observe.Observing;
@@ -24,6 +25,7 @@ public class RPNCore implements Observed,MementoOriginator {
 
     private MemorySlotManager memorySlotManager;
     private ProgramManager programManager;
+    private MementoCaretaker mementoCaretaker;
 
     public RPNCore() {
         this.stack = new RPNStack();
@@ -31,6 +33,7 @@ public class RPNCore implements Observed,MementoOriginator {
         this.numComposer = new RPNNumComposer();
         this.memorySlotManager = new MemorySlotManager();
         this.programManager = new ProgramManager();
+        this.mementoCaretaker = new MementoCaretaker();
         this.clear();
     }
 
@@ -40,6 +43,7 @@ public class RPNCore implements Observed,MementoOriginator {
         this.setPROGFlag(false);
         this.getNumComposer().setNormalValue("");
         this.getStack().clearStack();
+        this.getMementoCaretaker().clear();
         //this.memorySlotManager.clearSlots();
         //this.programManager.clearProgram_slots();
 
@@ -129,5 +133,9 @@ public class RPNCore implements Observed,MementoOriginator {
 
     public ProgramManager getProgramManager() {
         return programManager;
+    }
+
+    public MementoCaretaker getMementoCaretaker() {
+        return mementoCaretaker;
     }
 }

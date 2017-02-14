@@ -14,8 +14,7 @@ public class REDOCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        MementoCaretaker mc = MementoCaretaker.getInstance();
-        mc.redo(core);
+        core.getMementoCaretaker().redo(core);
     }
 
 }

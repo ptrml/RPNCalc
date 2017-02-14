@@ -14,8 +14,7 @@ public class UNDOCommand extends SpecialCommand {
 
     @Override
     public void executable() {
-        MementoCaretaker mc = MementoCaretaker.getInstance();
-        mc.undo(core);
+        core.getMementoCaretaker().undo(core);
     }
 
 }

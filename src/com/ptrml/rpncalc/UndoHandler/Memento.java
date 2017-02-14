@@ -17,7 +17,6 @@ public class Memento {
         this.stack = core.getStack().getCurrentStack();
         this.displayVolatile = core.getNumComposer().getIsVolatile();
         this.displayVal = core.getNumComposer().getValue();
-
     }
 
     public Double[] getStack()

@@ -21,7 +21,7 @@ public class RPNWorker_Calculate extends RPNWorker {
         if(command != null)
         {
             //purge display
-            if(!core.getNumComposer().isEmpty() && !(command instanceof EnterableCommand))
+            if(!core.getNumComposer().isEmpty() && (command instanceof UndoableCommand) && !(command instanceof EnterableCommand))
                 new NUMINPUTCommand(core).execute();
 
             command.execute();

@@ -9,23 +9,11 @@ import java.util.List;
 public class MementoCaretaker {
     private List<Memento> undoList;
     private List<Memento> redoList;
-    private static MementoCaretaker instance;
 
     public MementoCaretaker() {
         this.undoList = new ArrayList<>();
         this.redoList = new ArrayList<>();
     }
-
-    public static MementoCaretaker getInstance()
-    {
-        if(instance == null) {
-            synchronized (MementoCaretaker.class)
-            {
-                instance = new MementoCaretaker();
-            }
-        }
-        return instance;
-    };
 
     public void addMemento(Memento coreMemento)
     {
@@ -57,4 +45,10 @@ public class MementoCaretaker {
         redoList.remove(coreMemento);
 
     };
+
+    public void clear()
+    {
+        this.undoList.clear();
+        this.redoList.clear();
+    }
 }
