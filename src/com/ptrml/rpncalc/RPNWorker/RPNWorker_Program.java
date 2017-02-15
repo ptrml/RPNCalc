@@ -9,7 +9,7 @@ import com.ptrml.rpncalc.Command.UndoableCommand.UndoableCommand;
 import com.ptrml.rpncalc.RPNCore;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Invoker koga sistemot e vo PROG sostojba
  */
 public class RPNWorker_Program extends RPNWorker {
 

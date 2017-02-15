@@ -9,7 +9,7 @@ import com.ptrml.rpncalc.RPNCore;
 import java.util.List;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Invoker koga sistemot e vo normalna sostojba
  */
 public class RPNWorker_Calculate extends RPNWorker {
 
@@ -20,7 +20,7 @@ public class RPNWorker_Calculate extends RPNWorker {
     public void execute(Command command) throws Exception {
         if(command != null)
         {
-            //purge display
+            //purge display (NumComposer) if not empty
             if(!core.getNumComposer().isEmpty() && (command instanceof UndoableCommand) && !(command instanceof EnterableCommand))
                 new NUMINPUTCommand(core).execute();
 

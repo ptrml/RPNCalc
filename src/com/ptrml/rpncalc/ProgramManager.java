@@ -3,7 +3,7 @@ package com.ptrml.rpncalc;
 import com.ptrml.rpncalc.Command.Command;
 
 /**
- * Created by ptrml on 2/12/2017.
+ * Keeps saved commands for MACROs
  */
 public class ProgramManager {
     private Command[] program_slots;

@@ -5,7 +5,7 @@ import com.ptrml.rpncalc.Command.SpecialCommand.SpecialCommand;
 import com.ptrml.rpncalc.RPNCore;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Pomosna komanda koja se povikuva programski. Se koristi ako e povikana nekoja operacija dodeka vrednosta na ekranot ne e vnesena vo stekot
  */
 public class NUMINPUTCommand extends UndoableCommand implements EnterableCommand {
     String current_str;

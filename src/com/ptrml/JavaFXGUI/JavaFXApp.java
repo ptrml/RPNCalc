@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 
 import java.util.ResourceBundle;
 
+/**
+ * Starts GUI
+ */
 public class JavaFXApp extends Application implements AppGUI {
 
 

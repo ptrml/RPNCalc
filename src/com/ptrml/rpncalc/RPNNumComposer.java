@@ -1,7 +1,7 @@
 package com.ptrml.rpncalc;
 
 /**
- * Created by ptrml on 2/11/2017.
+ * Calculators display. Composes the numbers berfore entered in the calculators stack.
  */
 public class RPNNumComposer {
 

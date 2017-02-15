@@ -5,7 +5,7 @@ import com.ptrml.rpncalc.RPNCore;
 import com.ptrml.rpncalc.RPNStack;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Komandi so specijalna namena, ne se zapisuvaat vo memento
  */
 abstract public class SpecialCommand extends Command {
 
@@ -14,7 +14,7 @@ abstract public class SpecialCommand extends Command {
     }
 
     public void execute() throws Exception {
-        //TODO template
+
         this.executable();
         core.notifyObservers();
     };

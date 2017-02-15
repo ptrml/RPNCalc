@@ -8,12 +8,12 @@ import com.ptrml.rpncalc.CharLegend;
 import com.ptrml.rpncalc.RPNCore;
 
 /**
- * Created by ptrml on 12/14/2016.
+ * Vrakja komanda koja ima sto podfunkcija. Ako e sto ke go izgasi sto modot, ako e broj ke se zapise vrednosta
  */
 public class STOCommandFactory extends CommandFactory {
     /**
      * @param c karakter na operatorot
-     * @return Special
+     * @return Command
      * @throws Exception ako karakterot ne e validen operator
      */
     public Command getCommand(Character c, RPNCore core) {

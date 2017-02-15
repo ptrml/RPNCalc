@@ -4,7 +4,7 @@ import com.ptrml.rpncalc.Command.Command;
 import com.ptrml.rpncalc.RPNCore;
 
 /**
- * Created by ptrml on 2/12/2017.
+ * Invoker so sostojbi
  */
 public abstract class RPNWorker {
     protected RPNCore core;

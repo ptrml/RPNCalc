@@ -1,12 +1,12 @@
 package com.ptrml.rpncalc;
 
 /**
- * Created by ptrml on 2/12/2017.
+ * Manages STO and RCL memory slots
  */
 public class MemorySlotManager {
     private Double[] memory_slots;
 
-    public MemorySlotManager() {
+    MemorySlotManager() {
         this.memory_slots = new Double[] {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
     }
 

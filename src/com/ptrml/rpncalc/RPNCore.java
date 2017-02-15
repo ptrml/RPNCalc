@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Context of app. Keeps all calculator states. Also observed by GUI.
  */
 public class RPNCore implements Observed,MementoOriginator {
 

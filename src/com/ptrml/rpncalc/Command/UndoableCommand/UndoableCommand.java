@@ -6,7 +6,7 @@ import com.ptrml.rpncalc.RPNCore;
 import com.ptrml.rpncalc.UndoHandler.MementoCaretaker;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Normalni komandi, se pravi memento pred izvrsuvanje so template pattern
  */
 abstract public class UndoableCommand extends Command {
 

@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Gi cuva site vrednosti na kopcinjata/identifikatorite na komandite
  */
 public class CharLegend {
 

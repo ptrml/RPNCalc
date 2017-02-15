@@ -4,7 +4,7 @@ import com.ptrml.rpncalc.Command.EnterableCommand;
 import com.ptrml.rpncalc.RPNCore;
 
 /**
- * Created by ptrml on 2/7/2017.
+ * Ja vnesuva vrednosta od ekranot vo stekot
  */
 public class ENTERCommand extends UndoableCommand implements EnterableCommand {
     private String current_str;

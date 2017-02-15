@@ -3,6 +3,8 @@ package com.ptrml.rpncalc.Command.UndoableCommand;
 import com.ptrml.rpncalc.CharLegend;
 import com.ptrml.rpncalc.RPNCore;
 import com.ptrml.rpncalc.RPNStack;
+import com.ptrml.rpncalc.TrigConverter.TrigConverter;
+import com.ptrml.rpncalc.TrigConverter.TrigFactory;
 
 /**
  * Created by ptrml on 2/7/2017.
@@ -16,15 +18,10 @@ public class TANCommand extends UndoableCommand {
     public void executable() throws Exception {
         Double x = core.getStack().pull();
         Double calculated;
+        TrigConverter trigConverter = (TrigFactory.getInstance()).getConverter(core.getTrigMode());
 
-        if(core.getTrigMode()== CharLegend.getInstance().MODE_DEG)
-            calculated = Math.tan(Math.toRadians(x));
-        else if (core.getTrigMode()== CharLegend.getInstance().MODE_GRAD)
-            calculated = Math.tan(Math.PI * x / 200);
-        else if (core.getTrigMode()== CharLegend.getInstance().MODE_RAD)
-            calculated = Math.tan((x));
-        else
-            throw new Exception("Unknown trig mode");
+
+        calculated = Math.tan(trigConverter.toRad(x));
 
 
         core.getStack().push(calculated);

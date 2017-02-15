@@ -7,7 +7,7 @@ import com.ptrml.rpncalc.RPNWorker.RPNWorker_Calculate;
 import com.ptrml.rpncalc.RPNWorker.RPNWorker_Program;
 
 /**
- * Created by ptrml on 1/5/2017.
+ * Facade
  */
 public class RPNCalc {
 

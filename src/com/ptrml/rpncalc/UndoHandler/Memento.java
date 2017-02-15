@@ -7,10 +7,10 @@ import com.ptrml.rpncalc.RPNStack;
  * Created by ptrml on 2/11/2017.
  */
 public class Memento {
-    Double[] stack;
+    private Double[] stack;
 
-    Boolean displayVolatile;
-    String displayVal;
+    private Boolean displayVolatile;
+    private String displayVal;
 
     public Memento(RPNCore core) {
 

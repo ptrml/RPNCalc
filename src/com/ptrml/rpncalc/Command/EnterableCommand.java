@@ -1,7 +1,7 @@
 package com.ptrml.rpncalc.Command;
 
 /**
- * Created by ptrml on 2/12/2017.
+ * Samo gi grupira komandite koi vnesuvaat i vadat podatoci od ekranot (NumComposer)
  */
 public interface EnterableCommand {
 }

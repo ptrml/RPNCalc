@@ -5,6 +5,6 @@ package com.ptrml.rpncalc.UndoHandler;
  */
 public interface MementoOriginator {
 
-    void setState(Memento memento);
-    Memento createMemento();
+    public void setState(Memento memento);
+    public Memento createMemento();
 }

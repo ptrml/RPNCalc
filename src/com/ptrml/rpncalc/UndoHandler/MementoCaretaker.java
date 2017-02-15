@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ptrml on 2/11/2017.
+ * Keeps mementos + manages memento based  undo function
  */
 public class MementoCaretaker {
     private List<Memento> undoList;
